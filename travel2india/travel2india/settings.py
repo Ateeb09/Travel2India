@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-(xc)ay))dtav_+9y5u4xtfwdiba0et6x73*0&+p#)(-aj06pu+
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.1.6', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
 
 
 
@@ -138,3 +140,18 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ateebahmad009@gmail.com'  # Your Gmail
 EMAIL_HOST_PASSWORD = 'wxmw ovgr awpj wjfu'  # Gmail App Password (not your login password)
+
+
+
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Whitenoise Middleware
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+# For static files compression
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
