@@ -1,0 +1,635 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel2India.net.in</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+
+
+    <!-- <a href="{% url 'contact' %}" class="back-btn">📩 Contact Us</a> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/" style="text-decoration:none;">Travel2India<section class="intro-video">
+  <video autoplay muted loop playsinline>
+    <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section></a>
+    </div>
+   <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'destinations' %}">Destinations</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'inquiry' %}">Booking Inquiry</a></li>
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'about' %}">About Us</a></li>
+    <button id="theme-toggle" class="theme-toggle-btn">
+      🌙 Dark Mode
+    </button>
+     <li><a href="{% url 'flight_booking' %}">Book Tickets</a></li> 
+</ul>
+
+  </div>
+</nav>
+
+
+<marquee behavior="scroll" direction="left" scrollamount="6" style="font-size: 20px; color: #ff5733; font-weight: bold; padding: 10px 0;">
+    Explore Incredible India with Travel2India – Your Gateway to Unforgettable Journeys!
+</marquee>
+
+
+
+
+
+  <div id="featuredCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <!-- Kerala -->
+    <div class="carousel-item active">
+      <img src="{% static 'images/kerala.jpg' %}" class="d-block w-100" alt="Kerala" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Kerala Backwaters</h5>
+        <p>Peaceful canals and lush green views.</p>
+      </div>
+    </div>
+
+    <!-- Varanasi -->
+    <div class="carousel-item">
+      <img src="{% static 'images/varanasi.jpg' %}" class="d-block w-100" alt="Varanasi" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Varanasi</h5>
+        <p>Spiritual ghats and timeless rituals.</p>
+      </div>
+    </div>
+
+    <!-- Agra -->
+    <div class="carousel-item">
+      <img src="{% static 'images/agra.jpg' %}" class="d-block w-100" alt="Agra" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Agra</h5>
+        <p>Home of the iconic Taj Mahal.</p>
+      </div>
+    </div>
+
+    <!-- Delhi -->
+    <div class="carousel-item">
+      <img src="{% static 'images/delhi.jpg' %}" class="d-block w-100" alt="Delhi" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Delhi</h5>
+        <p>A vibrant blend of history and modernity.</p>
+      </div>
+    </div>
+
+    <!-- Jaipur -->
+    <div class="carousel-item">
+      <img src="{% static 'images/jaipur.jpg' %}" class="d-block w-100" alt="Jaipur" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Jaipur</h5>
+        <p>The Pink City of royal palaces and forts.</p>
+      </div>
+    </div>
+
+    <!-- Jaisalmer -->
+    <div class="carousel-item">
+      <img src="{% static 'images/jaisalmer.jpg' %}" class="d-block w-100" alt="Jaisalmer" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Jaisalmer</h5>
+        <p>The Golden City in the Thar Desert.</p>
+      </div>
+    </div>
+
+    <!-- Jodhpur -->
+    <div class="carousel-item">
+      <img src="{% static 'images/jodhpur.jpg' %}" class="d-block w-100" alt="Jodhpur" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Jodhpur</h5>
+        <p>The Blue City with mighty forts and culture.</p>
+      </div>
+    </div>
+
+    <!-- Udaipur -->
+    <div class="carousel-item">
+      <img src="{% static 'images/udaipur.jpg' %}" class="d-block w-100" alt="Udaipur" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Udaipur</h5>
+        <p>The City of Lakes and romantic palaces.</p>
+      </div>
+    </div>
+
+    <!-- Ladakh -->
+    <div class="carousel-item">
+      <img src="{% static 'images/ladakh.jpg' %}" class="d-block w-100" alt="Ladakh" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ladakh</h5>
+        <p>Adventure and serenity among high passes.</p>
+      </div>
+    </div>
+
+    <!-- Amritsar -->
+    <div class="carousel-item">
+      <img src="{% static 'images/amritsar.jpg' %}" class="d-block w-100" alt="Amritsar" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Amritsar</h5>
+        <p>Home of the Golden Temple and heritage streets.</p>
+      </div>
+    </div>
+
+    <!-- Meghalaya -->
+    <div class="carousel-item">
+      <img src="{% static 'images/meghalaya.jpg' %}" class="d-block w-100" alt="Meghalaya" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Meghalaya</h5>
+        <p>The Abode of Clouds with lush green hills.</p>
+      </div>
+    </div>
+
+    <!-- Rishikesh -->
+    <div class="carousel-item">
+      <img src="{% static 'images/rishikesh.jpg' %}" class="d-block w-100" alt="Rishikesh" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Rishikesh</h5>
+        <p>Yoga Capital of the World with serene riverside.</p>
+      </div>
+    </div>
+
+    <!-- Ranthambore -->
+    <div class="carousel-item">
+      <img src="{% static 'images/ranthambore.jpg' %}" class="d-block w-100" alt="Ranthambore" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ranthambore</h5>
+        <p>Explore wildlife safaris in the famous tiger reserve.</p>
+      </div>
+    </div>
+
+    <!-- Goa -->
+    <div class="carousel-item">
+      <img src="{% static 'images/goa.jpg' %}" class="d-block w-100" alt="Goa" style="height: 450px; object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Goa</h5>
+        <p>Famous for its beaches and nightlife.</p>
+      </div>
+    </div>
+
+
+    <div class="carousel-item">
+  <img src="{% static 'images/kolkata.jpg' %}" class="d-block w-100" alt="Kolkata" style="height: 450px; object-fit: cover;">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Kolkata</h5>
+    <p>Cultural heritage and colonial charm.</p>
+  </div>
+</div>
+
+
+  <div class="carousel-item">
+  <img src="{% static 'images/darjeeling.jpg' %}" class="d-block w-100" alt="Darjeeling" style="height: 450px; object-fit: cover;">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Darjeeling</h5>
+    <p>Misty hills and world-famous tea gardens.</p>
+  </div>
+</div>
+
+
+<div class="carousel-item">
+  <img src="{% static 'images/mumbai.jpg' %}" class="d-block w-100" alt="Mumbai" style="height: 450px; object-fit: cover;">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Mumbai</h5>
+    <p>The city of dreams and dazzling coastline.</p>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    <!-- <section class="intro-video">
+  <video autoplay muted loop playsinline>
+    <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section> -->
+
+<section class="about-us py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2>Know More</h2>
+        <p>
+          <b>Travel2India is your ultimate travel companion for exploring the beauty, culture, and diversity of India.
+          We are passionate about showcasing the best tourist destinations, from serene backwaters to bustling cities and sacred ghats.</b>
+        </p>
+        <p>
+          <i>Whether you're looking for adventure, heritage, or spiritual retreats, our platform offers carefully curated destinations and detailed travel guides to help you plan your perfect trip.</i>
+        </p>
+        <a href="#destinations" class="btn btn-primary mt-3">Explore Destinations</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="{% static 'images/about-us(2).jpg' %}" alt="About Us" class="img-fluid rounded shadow" style="max-width: 90%;">
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen=""></iframe> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<header>
+    <h1>Travel2India</h1>
+    <p>Discover the most beautiful destinations in India!</p>
+</header>
+
+<!-- <nav>
+    <input type="text" id="searchInput" placeholder="Search destination...">
+</nav> -->
+<div class="search-container">
+  <form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" placeholder="🔍 Search for a destination..." required>
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<section id="destinations" class="py-5">
+<div class="card-container">
+    {% comment %} Destination Cards {% endcomment %}
+
+    <div class="card">
+        <img src="{% static 'images/kerala.jpg' %}" alt="Kerala">
+        <div class="card-content">
+            <h2>Kerala Backwaters</h2>
+            <p>Peaceful canals, houseboats, and lush greenery.</p>
+            <span class="price-badge">₹12,499</span>
+            <a href="{% url 'kerala' %}">Read More</a>
+        </div>
+    </div>
+
+
+    
+  <div class="card">
+  <img src="{% static 'images/delhi.jpg' %}" alt="Delhi">
+  <div class="card-content">
+  <h2>Delhi</h2>
+  <p>The heart of India, famous for monuments & street food.</p>
+  <span class="price-badge">₹10,999</span>
+  <a href="{% url 'delhi' %}">Read More</a>
+  </div>
+  </div>
+  
+
+  
+  <div class="card">
+  <img src="{% static 'images/agra.jpg' %}" alt="Agra">
+  <div class="card-content">
+  <h2>Agra</h2>
+  <p>Home of the iconic Taj Mahal and Mughal heritage.</p>
+  <span class="price-badge">₹9,499</span>
+  <a href="{% url 'agra' %}">Read More</a>
+  </div>
+  </div>
+  
+
+  
+  <div class="card">
+  <img src="{% static 'images/jaipur.jpg' %}" alt="Jaipur">
+  <div class="card-content">
+  <h2>Jaipur</h2>
+  <p>The Pink City, known for forts & royal palaces.</p>
+  <span class="price-badge">₹11,999</span>
+  <a href="{% url 'jaipur' %}">Read More</a>
+  </div>
+  </div>
+ 
+
+  
+  <div class="card">
+  <img src="{% static 'images/jaisalmer.jpg' %}" alt="Jaisalmer">
+  <div class="card-content">
+  <h2>Jaisalmer</h2>
+  <p>Golden city with desert safaris & forts.</p>
+  <span class="price-badge">₹15,999</span>
+  <a href="{% url 'jaisalmer' %}">Read More</a>
+  </div>
+  </div>
+ 
+
+  
+  <div class="card">
+  <img src="{% static 'images/jodhpur.jpg' %}" alt="Jodhpur">
+  <div class="card-content">
+  <h2>Jodhpur</h2>
+  <p>The Blue City, famed for Mehrangarh Fort & markets.</p>
+  <span class="price-badge">₹12,999</span>
+  <a href="{% url 'jodhpur' %}">Read More</a>
+  </div>
+  </div>
+ 
+
+  
+    <div class="card">
+      <img src="{% static 'images/udaipur.jpg' %}" alt="Udaipur">
+      <div class="card-content">
+      <h2>Udaipur</h2>
+      <p>City of Lakes, known for scenic beauty & palaces.</p>
+      <span class="price-badge">₹13,499</span>
+      <a href="{% url 'udaipur' %}">Read More</a>
+    </div>
+
+      </div>
+     
+
+    <div class="card">
+        <img src="{% static 'images/varanasi.jpg' %}" alt="varanasi">
+        <div class="card-content">
+            <h2>Varanasi</h2>
+            <p>Spiritual ghats and timeless rituals on the Ganges.</p>
+            <span class="price-badge">₹10,999</span>
+            <a href="{% url 'varanasi' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/ladakh.jpg' %}" alt="Ladakh">
+        <div class="card-content">
+            <h2>Ladakh</h2>
+            <p>Snowy mountains, serene lakes, and monasteries.</p>
+            <span class="price-badge">₹19,999</span>
+            <a href="{% url 'ladakh' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/goa.jpg' %}" alt="Goa">
+        <div class="card-content">
+            <h2>Goa</h2>
+            <p>Vibrant beaches, nightlife, and colonial charm.</p>
+            <span class="price-badge">₹21,999</span>
+            <a href="{% url 'goa' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/ranthambore.jpg' %}" alt="Ranthambore">
+        <div class="card-content">
+            <h2>Ranthambore</h2>
+            <p>Wildlife sanctuary home to majestic tigers.</p>
+            <span class="price-badge">₹17,999</span>
+            <a href="{% url 'ranthambore' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/meghalaya.jpg' %}" alt="Meghalaya">
+        <div class="card-content">
+            <h2>Meghalaya</h2>
+            <p>Waterfalls, root bridges, and mystical hills.</p>
+            <span class="price-badge">₹15,999</span>
+            <a href="{% url 'meghalaya' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/amritsar.jpg' %}" alt="Amritsar">
+        <div class="card-content">
+            <h2>Amritsar</h2>
+            <p>Golden Temple and unforgettable spiritual vibe.</p>
+            <span class="price-badge">₹20,999</span>
+            <a href="{% url 'amritsar' %}">Read More</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="{% static 'images/rishikesh.jpg' %}" alt="Rishikesh">
+        <div class="card-content">
+            <h2>Rishikesh</h2>
+            <p>Yoga capital, river rafting, and Ganga aarti.</p>
+            <span class="price-badge">₹19,999</span>
+            <a href="{% url 'rishikesh' %}">Read More</a>
+        </div>
+    </div>
+
+
+  <div class="card">
+  <img src="{% static 'images/kolkata.jpg' %}" alt="Jaipur">
+  <div class="card-content">
+  <h2>Kolkata</h2>
+  <p>The City of Joy, famous for culture & sweets.</p>
+  <span class="price-badge">₹9,499</span>
+  <a href="{% url 'kolkata' %}">Read More</a>
+  </div>
+  </div>
+
+
+  <div class="card">
+  <img src="{% static 'images/darjeeling.jpg' %}" alt="Jaipur">
+  <div class="card-content">
+  <h2>Darjeeling</h2>
+  <p>Queen of Hills, known for tea gardens & scenic beauty.</p>
+  <span class="price-badge">₹12,999</span>
+  <a href="{% url 'darjeeling' %}">Read More</a>
+  </div>
+  </div>
+
+
+<div class="card">
+  <img src="{% static 'images/mumbai.jpg' %}" alt="Mumbai">
+  <div class="card-content">
+    <h2>Mumbai</h2>
+    <p>The City of Dreams, famous for Bollywood & beaches.</p>
+    <span class="price-badge">₹10,999</span>
+    <a href="{% url 'mumbai' %}">Read More</a>
+  </div>
+</div>
+
+
+    <section class="reviews-section">
+  <h2>What Our Travelers Say</h2>
+  <div class="reviews-container">
+    <div class="review-card">
+      <p>"The trip was simply amazing! Loved the houseboats in Kerala."</p>
+      <h4>- Ben Stokes</h4>
+    </div>
+    <div class="review-card">
+      <p>"Varanasi was magical. Everything was well organized."</p>
+      <h4>- Rohit Sharma</h4>
+    </div>
+    <div class="review-card">
+      <p>"Ladakh trip was unforgettable. Great planning by Travel2India!"</p>
+      <h4>- Virat Kohli</h4>
+    </div>
+  </div>
+</section>
+</section>
+
+</div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('keyup', function () {
+        const query = this.value.toLowerCase();
+        cards.forEach(card => {
+            const title = card.querySelector('h2').textContent.toLowerCase();
+            card.style.display = title.includes(query) ? 'block' : 'none';
+        });
+    });
+</script>
+
+<footer>
+    <p>&copy; 2025 Travel2India. All rights reserved.</p>
+    <p><a href="{% url 'contact' %}">📩 Contact Us</a></p>
+
+    <section class="newsletter">
+  <h2>Subscribe to Our Newsletter</h2>
+  <p>Get the latest travel updates, offers, and tips!</p>
+  <form method="post" action="{% url 'subscribe' %}">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</footer>
+
+<footer class="footer">
+  <div class="footer-container">
+    <h3>Travel2India 🌏</h3>
+    <p>Discover the best places in India with us!</p>
+    <ul class="footer-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'destinations' %}">Destinations</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'inquiry' %}">Inquiry</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+    <p class="copyright">
+      &copy; {{ year }} Travel2India. All rights reserved.
+    </p>
+  </div>
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+
+  <div class="share-buttons">
+  <p>Share this page:</p>
+  <a href="https://wa.me/?text=Check%20this%20awesome%20Travel%20website%20https://yourwebsite.com" target="_blank" class="whatsapp-share">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+  <a href="mailto:?subject=Check%20Travel2India&body=Visit%20this%20awesome%20website%20https://yourwebsite.com" class="email-share">
+    <i class="fas fa-envelope"></i> Email
+  </a>
+</div>
+
+<!-- Chatbot Button -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">💬 Chat with us</button>
+
+<!-- Chatbot Container -->
+<div id="chatbot" class="chatbot">
+  <div class="chat-header">Travel2India Chatbot <span onclick="toggleChatbot()">❌</span></div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-message">Hello! How can I help you today?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+function toggleChatbot() {
+  const chatbot = document.getElementById('chatbot');
+  chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
+}
+
+function sendMessage() {
+  const userInput = document.getElementById('user-input');
+  const chatBody = document.getElementById('chat-body');
+  const message = userInput.value.trim();
+  if (message) {
+    chatBody.innerHTML += `<div class="user-message">${message}</div>`;
+    const reply = getBotReply(message);
+    chatBody.innerHTML += `<div class="bot-message">${reply}</div>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+    userInput.value = '';
+  }
+}
+
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+    sendMessage();
+  }
+}
+
+function getBotReply(message) {
+  const lowerMsg = message.toLowerCase();
+  if (lowerMsg.includes('hello') || lowerMsg.includes('hi')) {
+    return 'Hello! Welcome to Travel2India 🌏';
+  } else if (lowerMsg.includes('book') || lowerMsg.includes('ticket')) {
+    return 'You can book tickets via our Flight Booking page ✈️.';
+  } else if (lowerMsg.includes('destination') || lowerMsg.includes('place')) {
+    return 'We offer destinations like Goa, Kerala, Ladakh, and many more.';
+  } else if (lowerMsg.includes('contact')) {
+    return 'Please visit our Contact Us page for help ☎️.';
+  } else {
+    return 'Sorry, I didn’t get that. Try asking about "destinations" or "booking".';
+  }
+}
+</script>
+
+
+</footer>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+      toggleBtn.textContent = '☀️ Light Mode';
+    } else {
+      toggleBtn.textContent = '🌙 Dark Mode';
+    }
+  });
+</script>
+
+
+
+
+</body>
+</html>

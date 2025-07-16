@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Tickets Booking - Travel2India</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1>Flight Tickets Booking</h1>
+</header>
+
+<div class="flight-booking-container">
+    <form method="post">
+        {% csrf_token %}
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" placeholder="City of Departure" required>
+
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" placeholder="Destination City" required>
+
+        <label for="date">Departure Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="passengers">Number of Passengers:</label>
+        <input type="number" id="passengers" name="passengers" min="1" max="10" required>
+
+        <button type="submit" class="btn">Book Flight</button>
+    </form>
+</div>
+
+<a href="/" class="back-btn">← Back to Home</a>
+</body>
+</html>

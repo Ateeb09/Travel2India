@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5 text-center">
+    <h1 class="display-4">Welcome to Travel2India</h1>
+    <p class="lead">Your ultimate guide to discovering the most beautiful destinations across India.</p>
+    <img src="{% static 'images/india_map.png' %}" alt="India Map" class="img-fluid my-4" style="max-height: 400px; border-radius: 12px;">
+    <a href="{% url 'destinations' %}" class="btn btn-primary btn-lg">Explore Destinations</a>
+</div>
+{% endblock %}
+
+<!-- CONTACT PAGE -->
+{% block contact %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

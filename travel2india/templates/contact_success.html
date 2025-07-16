@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Sent - Travel2India</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Thank You!</h1>
+</header>
+
+<div class="container">
+    <p>Your message has been received. We'll get back to you shortly. 📨</p>
+    <a href="/" class="back-btn">← Back to Home</a>
+</div>
+<footer>
+    <p>&copy; 2025 Travel2India. All rights reserved.</p>
+    <p><a href="{% url 'contact' %}">📩 Contact Us</a></p>
+</footer>
+
+</body>
+</html>
