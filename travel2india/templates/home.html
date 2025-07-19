@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Travel2India.net.in</title>
+    <title>Travel2India - Explore Destinations</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -27,14 +27,28 @@
     <!-- Navbar -->
 <nav class="navbar">
   <div class="nav-container">
-    <div class="logo">
+    <!-- <div class="logo">
       <a href="/" style="text-decoration:none;">Travel2India<section class="intro-video">
   <video autoplay muted loop playsinline>
     <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </section></a>
-    </div>
+    </div> -->
+
+  <div class="brand-container">
+  <div class="flag-circle" title="IN Jai Hind!">
+    <video autoplay loop muted playsinline>
+      <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <h1 class="site-title">Travel2India</h1>
+</div>
+
+
+
+
    <ul class="nav-links">
     <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'destinations' %}">Destinations</a></li>
