@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Mumbai - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Mumbai</h1></header>
-<div class="container">
-    <!-- <div class="badge">City of Dreams 🌃</div> -->
-    <img src="{% static 'images/mumbai.jpg' %}" alt="Mumbai" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
 
-    <p style="margin-top:20px;">
-        Mumbai is India’s financial capital, home to Bollywood, iconic landmarks like Marine Drive, Gateway of India, and a vibrant nightlife.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+{% block title %}Mumbai{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/mumbai.jpg' %}" alt="Mumbai" class="hero-img">
+    <h1>Mumbai</h1>
+    <p class="hero-tagline">The City of Dreams—Bollywood, Marine Drive, and the relentless energy of India's financial capital.</p>
+    <p class="intro">Mumbai is where ambition meets the Arabian Sea—a city that never sleeps, home to Bollywood, the Bombay Stock Exchange, and Dabbawalas. From the Gateway of India and Elephanta Caves to the colonial grandeur of Chhatrapati Shivaji Terminus and the hip cafes of Bandra, Mumbai blends history, glamour, and street life. Walk the Marine Drive promenade at sunset, sample street food at Chowpatty, and feel the pulse of a city that welcomes dreamers from every corner of India.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Gateway of India & Elephanta Caves</li>
+                <li>Marine Drive & Chowpatty Beach</li>
+                <li>Chhatrapati Shivaji Terminus (CSMT)</li>
+                <li>Bollywood studios or Film City tour</li>
+                <li>Colaba Causeway, Bandra, Bollywood homes</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Nov–Feb:</strong> Pleasant, ideal for sightseeing</li>
+                <li><strong>Dec–Jan:</strong> Cool, minimal humidity</li>
+                <li><strong>Avoid:</strong> Apr–Jun (hot, humid), Jun–Sep (heavy monsoon)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Gateway, Marine Drive, Elephanta, street food</li>
+                <li><strong>4–5 days:</strong> Add Bollywood tour, beaches, nightlife</li>
+                <li>Hub for Goa, Ajanta-Ellora, Gujarat</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Mumbai" class="btn-inquiry">Plan My Mumbai Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

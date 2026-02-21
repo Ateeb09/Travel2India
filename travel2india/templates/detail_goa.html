@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Goa - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Goa</h1></header>
-<div class="container">
-    <img src="{% static 'images/goa.jpg' %}" alt="Goa" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Goa is India’s beach paradise. With vibrant nightlife, Portuguese-era churches, and relaxing seaside resorts, it's a perfect getaway for fun and culture.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Goa{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/goa.jpg' %}" alt="Goa" class="hero-img">
+    <h1>Goa</h1>
+    <p class="hero-tagline">Golden beaches, Portuguese heritage, and the perfect blend of chill and thrill.</p>
+    <p class="intro">Goa is India's beach paradise—golden sands, swaying palms, and a laid-back vibe that draws travelers from around the world. Beyond the beaches, explore 450 years of Portuguese heritage in Old Goa's churches, wander through spice plantations, and savor fresh seafood at beach shacks. By night, Anjuna and Baga pulse with music and nightlife; by day, Palolem and Agonda offer serenity. Whether you seek adventure, relaxation, or culture, Goa delivers.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Basilica of Bom Jesus & Se Cathedral</li>
+                <li>Palolem, Agonda & Benaulim beaches</li>
+                <li>Spice plantation tour</li>
+                <li>Fontainhas (Latin Quarter, Panjim)</li>
+                <li>Dudhsagar Falls (monsoon)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Nov–Feb:</strong> Peak season, perfect beach weather</li>
+                <li><strong>Dec:</strong> Sunburn Festival, Christmas & New Year</li>
+                <li><strong>Jun–Sep:</strong> Monsoon, lush, fewer crowds, waterfalls</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>3–4 days:</strong> North + South Goa highlights</li>
+                <li><strong>5–7 days:</strong> Beaches, heritage, spice tour, nightlife</li>
+                <li>Easy add-on to Mumbai or Kerala</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Goa" class="btn-inquiry">Plan My Goa Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

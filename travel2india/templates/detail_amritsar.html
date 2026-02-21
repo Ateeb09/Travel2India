@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Amritsar - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Amritsar</h1></header>
-<div class="container">
-    <img src="{% static 'images/amritsar.jpg' %}" alt="Amritsar" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Amritsar is home to the stunning Golden Temple, a symbol of peace and devotion. The city also holds immense historic significance with Jallianwala Bagh and Wagah border.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Amritsar{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/amritsar.jpg' %}" alt="Amritsar Golden Temple" class="hero-img">
+    <h1>Amritsar</h1>
+    <p class="hero-tagline">Home of the Golden Temple—Sikhism's holiest shrine and India's warmest embrace.</p>
+    <p class="intro">Amritsar is defined by the Harmandir Sahib—the Golden Temple—a shimmering sanctuary in the middle of a sacred pool, open to all faiths 24/7. Experience the divine Langar, where tens of thousands are fed daily; witness the Wagah Border ceremony with its theatrical flag-lowering; and walk through Jallianwala Bagh, a moving memorial to India's freedom struggle. Amritsar is spiritual, historical, and unforgettable—a city that opens its heart to every visitor.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Golden Temple (day & night visits)</li>
+                <li>Langar (community kitchen) experience</li>
+                <li>Wagah Border ceremony</li>
+                <li>Jallianwala Bagh Memorial</li>
+                <li>Partition Museum & old city bazaars</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Pleasant Punjab weather</li>
+                <li><strong>Nov:</strong> Guru Nanak Jayanti (major Sikh festival)</li>
+                <li><strong>Avoid:</strong> Apr–Jun (very hot), Dec–Jan (cold, fog)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>1–2 days:</strong> Golden Temple, Wagah, Jallianwala Bagh</li>
+                <li><strong>2 days:</strong> Add Partition Museum, food tour, evening aarti</li>
+                <li>Gateway to Punjab & Himachal</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Amritsar" class="btn-inquiry">Plan My Amritsar Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Udaipur - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Udaipur</h1></header>
-<div class="container">
-    <img src="{% static 'images/udaipur.jpg' %}" alt="Udaipur" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Udaipur is the City of Lakes, with romantic palaces, scenic boat rides, and the magnificent City Palace overlooking Lake Pichola.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Udaipur{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/udaipur.jpg' %}" alt="Udaipur" class="hero-img">
+    <h1>Udaipur</h1>
+    <p class="hero-tagline">The City of Lakes—Venice of the East, where romance floats on water and palaces rise from the shore.</p>
+    <p class="intro">Udaipur is India's most romantic city—serene lakes, white marble palaces, and narrow streets that invite exploration. The legendary Lake Palace appears to float on Lake Pichola, while City Palace crowns the waterfront with intricate courtyards and mirrored halls. Take a boat ride at sunset, stroll through the old city's bazaars, and witness classical dance and music at Bagore Ki Haveli. Udaipur is where fairy tales feel real.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>City Palace & museum</li>
+                <li>Lake Pichola boat ride</li>
+                <li>Lake Palace (view from boat or dining)</li>
+                <li>Bagore Ki Haveli (cultural show)</li>
+                <li>Jagdish Temple & old city lanes</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Sep–Mar:</strong> Pleasant, ideal for lakes & palaces</li>
+                <li><strong>Oct–Nov:</strong> Post-monsoon, lakes full, lush surroundings</li>
+                <li><strong>Avoid:</strong> Apr–Jun (very hot, low water levels)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> City Palace, lake cruise, old city</li>
+                <li><strong>3–4 days:</strong> Add Monsoon Palace, Kumbhalgarh day trip</li>
+                <li>Perfect romantic retreat or Rajasthan finale</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Udaipur" class="btn-inquiry">Plan My Udaipur Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

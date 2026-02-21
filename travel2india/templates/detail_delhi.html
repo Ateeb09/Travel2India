@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delhi - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Delhi</h1></header>
-<div class="container">
-    <img src="{% static 'images/delhi.jpg' %}" alt="Delhi" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Delhi is the capital of India, known for its rich history, stunning monuments, vibrant markets, and delicious street food.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Delhi{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/delhi.jpg' %}" alt="Delhi" class="hero-img">
+    <h1>Delhi</h1>
+    <p class="hero-tagline">The heart of India—where empires rose and fell, and history lives in every monument, bazaar, and bite.</p>
+    <p class="intro">India's capital is a dazzling collision of old and new. Ancient monuments like the Red Fort, Humayun's Tomb, and Qutub Minar stand alongside modern metro lines and bustling markets. Lose yourself in the lanes of Chandni Chowk for legendary street food, explore the grandeur of Mughal architecture, and feel the pulse of a city that has been the seat of power for centuries. Delhi is not just a destination—it's an immersion into India's soul.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Red Fort & Chandni Chowk</li>
+                <li>Humayun's Tomb (UNESCO)</li>
+                <li>Qutub Minar complex</li>
+                <li>India Gate & Rajpath</li>
+                <li>Lotus Temple & Akshardham</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Pleasant, ideal for sightseeing</li>
+                <li><strong>Oct–Nov:</strong> Post-monsoon greenery, festive season</li>
+                <li><strong>Avoid:</strong> May–Jun (extreme heat), Dec–Jan (cold & fog)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Major monuments + food tour</li>
+                <li><strong>4–5 days:</strong> Deep dive, museums, day trips to Agra/Jaipur</li>
+                <li>Perfect gateway to Golden Triangle</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Delhi" class="btn-inquiry">Plan My Delhi Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

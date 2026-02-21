@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Varanasi - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Varanasi</h1></header>
-<div class="container">
-    <img src="{% static 'images/varanasi.jpg' %}" alt="varanasi" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Varanasi is one of the world’s oldest living cities. Known for the ghats of the Ganges, Ganga Aarti, and deep spiritual energy, it attracts millions of pilgrims each year.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Varanasi{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/varanasi.jpg' %}" alt="Varanasi" class="hero-img">
+    <h1>Varanasi</h1>
+    <p class="hero-tagline">The spiritual heart of India—one of the world's oldest living cities, where the Ganges holds eternity.</p>
+    <p class="intro">Varanasi, or Kashi, has drawn pilgrims and seekers for over 3,000 years. The sacred Ganges flows past ancient ghats where rituals of life and death unfold daily—sunrise boat rides, evening aartis, and the timeless rhythm of devotion. Wander the maze of lanes behind the ghats, discover silk weavers and yoga schools, and witness a city that has outlived empires. Varanasi is not merely a destination; it's an encounter with the soul of India.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Sunrise boat ride on the Ganges</li>
+                <li>Evening Ganga Aarti (Dasashwamedh Ghat)</li>
+                <li>Sarnath (Buddhist ruins, Dhamek Stupa)</li>
+                <li>Walk the ghats & old city lanes</li>
+                <li>Silk weaving & Banarasi saree workshops</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Pleasant, ideal for early boat rides</li>
+                <li><strong>Nov:</strong> Dev Deepawali (festival of lights on ghats)</li>
+                <li><strong>Avoid:</strong> Apr–Jun (extreme heat), Jul–Aug (monsoon floods)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2 days:</strong> Boat ride, aarti, Sarnath, old city</li>
+                <li><strong>3 days:</strong> Add yoga, silk tour, evening walks</li>
+                <li>Often paired with Bodh Gaya or Ayodhya</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Varanasi" class="btn-inquiry">Plan My Varanasi Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

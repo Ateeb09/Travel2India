@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Darjeeling - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Darjeeling</h1></header>
-<div class="container">
-    <!-- <div class="badge">Hill Station Beauty ⛰️</div> -->
-    <img src="{% static 'images/darjeeling.jpg' %}" alt="Darjeeling" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
 
-    <p style="margin-top:20px;">
-        Nestled in the Himalayas, Darjeeling is famous for its tea, breathtaking views of Kanchenjunga, and the historic Darjeeling Himalayan Railway.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+{% block title %}Darjeeling{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/darjeeling.jpg' %}" alt="Darjeeling" class="hero-img">
+    <h1>Darjeeling</h1>
+    <p class="hero-tagline">Queen of the Hills—misty tea estates, the toy train, and Kanchenjunga at sunrise.</p>
+    <p class="intro">Darjeeling sits in the Eastern Himalayas, wrapped in mist and the aroma of the world's finest tea. The Darjeeling Himalayan Railway—a UNESCO World Heritage "toy train"—chugs through the hills; Tiger Hill offers sunrise views of Kanchenjunga; and tea estates invite walks through emerald plantations. From Buddhist monasteries to colonial charm, Darjeeling blends mountain grandeur with warm hospitality. It's the perfect Himalayan escape without the altitude of Ladakh.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Tiger Hill (Kanchenjunga sunrise)</li>
+                <li>Darjeeling Himalayan Railway (toy train)</li>
+                <li>Tea estate tours (Happy Valley, etc.)</li>
+                <li>Batasia Loop & Peace Pagoda</li>
+                <li>Himalayan Mountaineering Institute</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Mar–May, Sep–Nov:</strong> Clear skies, best mountain views</li>
+                <li><strong>Oct–Nov:</strong> Post-monsoon, lush, Diwali season</li>
+                <li><strong>Avoid:</strong> Jun–Aug (monsoon, clouds block views)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Tiger Hill, toy train, tea estate</li>
+                <li><strong>4–5 days:</strong> Add Kalimpong, Kurseong, leisurely pace</li>
+                <li>Gateway: Bagdogra/NJP (from Kolkata)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Darjeeling" class="btn-inquiry">Plan My Darjeeling Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

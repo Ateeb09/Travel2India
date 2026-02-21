@@ -1,72 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Travel2India - Explore Destinations</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+{% block title %}Explore Destinations{% endblock %}
 
-
-    <!-- <a href="{% url 'contact' %}" class="back-btn">📩 Contact Us</a> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <!-- Navbar -->
-<nav class="navbar">
-  <div class="nav-container">
-    <!-- <div class="logo">
-      <a href="/" style="text-decoration:none;">Travel2India<section class="intro-video">
-  <video autoplay muted loop playsinline>
-    <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section></a>
-    </div> -->
-
-  <div class="brand-container">
-  <div class="flag-circle" title="IN Jai Hind!">
-    <video autoplay loop muted playsinline>
-      <source src="{% static 'videos/intro(2).mp4' %}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <h1 class="site-title">Travel2India</h1>
-</div>
-
-
-
-
-   <ul class="nav-links">
-    <li><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="{% url 'destinations' %}">Destinations</a></li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    <li><a href="{% url 'inquiry' %}">Booking Inquiry</a></li>
-    <li><a href="{% url 'login' %}">Login</a></li>
-    <li><a href="{% url 'about' %}">About Us</a></li>
-    <button id="theme-toggle" class="theme-toggle-btn">
-      🌙 Dark Mode
-    </button>
-     <li><a href="{% url 'flight_booking' %}">Book Tickets</a></li> 
-</ul>
-
-  </div>
-</nav>
-
-
-<marquee behavior="scroll" direction="left" scrollamount="6" style="font-size: 20px; color: #ff5733; font-weight: bold; padding: 10px 0;">
+{% block content %}
+<marquee behavior="scroll" direction="left" scrollamount="6" style="font-size: 18px; color: var(--primary); font-weight: 600; padding: 10px 0; background: rgba(232,93,4,0.08);">
     Explore Incredible India with Travel2India – Your Gateway to Unforgettable Journeys!
 </marquee>
 
@@ -296,93 +234,71 @@
         <img src="{% static 'images/kerala.jpg' %}" alt="Kerala">
         <div class="card-content">
             <h2>Kerala Backwaters</h2>
-            <p>Peaceful canals, houseboats, and lush greenery.</p>
-            <!-- <span class="price-badge">₹12,499</span> -->
-            <a href="{% url 'kerala' %}">Read More</a>
+            <p>Glide through emerald canals on traditional houseboats. Lush greenery, Ayurvedic retreats, and the serene rhythm of village life await in God's Own Country.</p>
+            <a href="{% url 'kerala' %}">Explore Kerala</a>
         </div>
     </div>
 
-
-    
   <div class="card">
   <img src="{% static 'images/delhi.jpg' %}" alt="Delhi">
   <div class="card-content">
   <h2>Delhi</h2>
-  <p>The heart of India, famous for monuments & street food.</p>
-  <!-- <span class="price-badge">₹10,999</span> -->
-  <a href="{% url 'delhi' %}">Read More</a>
+  <p>Where ancient monuments meet bustling bazaars. From Red Fort to Chandni Chowk, discover India's capital—history, culture, and incredible street food at every corner.</p>
+  <a href="{% url 'delhi' %}">Explore Delhi</a>
   </div>
   </div>
-  
 
-  
   <div class="card">
   <img src="{% static 'images/agra.jpg' %}" alt="Agra">
   <div class="card-content">
   <h2>Agra</h2>
-  <p>Home of the iconic Taj Mahal and Mughal heritage.</p>
-  <!-- <span class="price-badge">₹9,499</span> -->
-  <a href="{% url 'agra' %}">Read More</a>
+  <p>Stand before the magnificent Taj Mahal—a UNESCO wonder of eternal love. Explore Agra Fort, Fatehpur Sikri, and the rich legacy of Mughal architecture.</p>
+  <a href="{% url 'agra' %}">Explore Agra</a>
   </div>
   </div>
-  
 
-  
   <div class="card">
   <img src="{% static 'images/jaipur.jpg' %}" alt="Jaipur">
   <div class="card-content">
   <h2>Jaipur</h2>
-  <p>The Pink City, known for forts & royal palaces.</p>
-  <!-- <span class="price-badge">₹11,999</span> -->
-  <a href="{% url 'jaipur' %}">Read More</a>
+  <p>The Pink City dazzles with Amber Fort, Hawa Mahal, and royal palaces. Immerse in Rajasthan's heritage, vibrant markets, and timeless royal splendor.</p>
+  <a href="{% url 'jaipur' %}">Explore Jaipur</a>
   </div>
   </div>
- 
 
-  
   <div class="card">
   <img src="{% static 'images/jaisalmer.jpg' %}" alt="Jaisalmer">
   <div class="card-content">
   <h2>Jaisalmer</h2>
-  <p>Golden city with desert safaris & forts.</p>
-  <!-- <span class="price-badge">₹15,999</span> -->
-  <a href="{% url 'jaisalmer' %}">Read More</a>
+  <p>Rise from the Thar Desert like a golden mirage. Desert safaris, the living Jaisalmer Fort, and starry nights under the dunes make it unforgettable.</p>
+  <a href="{% url 'jaisalmer' %}">Explore Jaisalmer</a>
   </div>
   </div>
- 
 
-  
   <div class="card">
   <img src="{% static 'images/jodhpur.jpg' %}" alt="Jodhpur">
   <div class="card-content">
   <h2>Jodhpur</h2>
-  <p>The Blue City, famed for Mehrangarh Fort & markets.</p>
-  <!-- <span class="price-badge">₹12,999</span> -->
-  <a href="{% url 'jodhpur' %}">Read More</a>
+  <p>The Blue City crowns the desert with Mehrangarh Fort. Get lost in blue-washed lanes, spice markets, and the mighty walls that guard royal history.</p>
+  <a href="{% url 'jodhpur' %}">Explore Jodhpur</a>
   </div>
   </div>
- 
 
-  
     <div class="card">
       <img src="{% static 'images/udaipur.jpg' %}" alt="Udaipur">
       <div class="card-content">
       <h2>Udaipur</h2>
-      <p>City of Lakes, known for scenic beauty & palaces.</p>
-      <!-- <span class="price-badge">₹13,499</span> -->
-      <a href="{% url 'udaipur' %}">Read More</a>
+      <p>Venice of the East—romantic lakes, floating palaces, and white marble elegance. City of Lakes offers romance, heritage, and picture-perfect sunsets.</p>
+      <a href="{% url 'udaipur' %}">Explore Udaipur</a>
     </div>
-
       </div>
-     
 
     <div class="card">
-        <img src="{% static 'images/varanasi.jpg' %}" alt="varanasi">
+        <img src="{% static 'images/varanasi.jpg' %}" alt="Varanasi">
         <div class="card-content">
             <h2>Varanasi</h2>
-            <p>Spiritual ghats and timeless rituals on the Ganges.</p>
-            <!-- <span class="price-badge">₹10,999</span> -->
-            <a href="{% url 'varanasi' %}">Read More</a>
+            <p>One of the world's oldest cities. Witness sunrise boat rides on the Ganges, ancient ghats, spiritual rituals, and the soul of India come alive.</p>
+            <a href="{% url 'varanasi' %}">Explore Varanasi</a>
         </div>
     </div>
 
@@ -390,9 +306,8 @@
         <img src="{% static 'images/ladakh.jpg' %}" alt="Ladakh">
         <div class="card-content">
             <h2>Ladakh</h2>
-            <p>Snowy mountains, serene lakes, and monasteries.</p>
-            <!-- <span class="price-badge">₹19,999</span> -->
-            <a href="{% url 'ladakh' %}">Read More</a>
+            <p>Where mountains touch the sky. Pangong Lake, ancient monasteries, high-altitude adventures, and landscapes so dramatic they feel otherworldly.</p>
+            <a href="{% url 'ladakh' %}">Explore Ladakh</a>
         </div>
     </div>
 
@@ -400,9 +315,8 @@
         <img src="{% static 'images/goa.jpg' %}" alt="Goa">
         <div class="card-content">
             <h2>Goa</h2>
-            <p>Vibrant beaches, nightlife, and colonial charm.</p>
-            <!-- <span class="price-badge">₹21,999</span> -->
-            <a href="{% url 'goa' %}">Read More</a>
+            <p>Golden beaches, Portuguese heritage, and vibrant nightlife. From tranquil coves to lively shacks, Goa offers the perfect blend of chill and thrill.</p>
+            <a href="{% url 'goa' %}">Explore Goa</a>
         </div>
     </div>
 
@@ -410,9 +324,8 @@
         <img src="{% static 'images/ranthambore.jpg' %}" alt="Ranthambore">
         <div class="card-content">
             <h2>Ranthambore</h2>
-            <p>Wildlife sanctuary home to majestic tigers.</p>
-            <!-- <span class="price-badge">₹17,999</span> -->
-            <a href="{% url 'ranthambore' %}">Read More</a>
+            <p>Come face-to-face with the royal Bengal tiger. Safari through one of India's finest reserves—ancient ruins, diverse wildlife, and unforgettable encounters.</p>
+            <a href="{% url 'ranthambore' %}">Explore Ranthambore</a>
         </div>
     </div>
 
@@ -420,9 +333,8 @@
         <img src="{% static 'images/meghalaya.jpg' %}" alt="Meghalaya">
         <div class="card-content">
             <h2>Meghalaya</h2>
-            <p>Waterfalls, root bridges, and mystical hills.</p>
-            <!-- <span class="price-badge">₹15,999</span> -->
-            <a href="{% url 'meghalaya' %}">Read More</a>
+            <p>Abode of Clouds—living root bridges, cascading waterfalls, and misty hills. Explore Cherrapunji, Mawlynnong, and nature's most magical creations.</p>
+            <a href="{% url 'meghalaya' %}">Explore Meghalaya</a>
         </div>
     </div>
 
@@ -430,9 +342,8 @@
         <img src="{% static 'images/amritsar.jpg' %}" alt="Amritsar">
         <div class="card-content">
             <h2>Amritsar</h2>
-            <p>Golden Temple and unforgettable spiritual vibe.</p>
-            <!-- <span class="price-badge">₹20,999</span> -->
-            <a href="{% url 'amritsar' %}">Read More</a>
+            <p>Home of the Golden Temple—Sikhism's holiest shrine. Witness the divine Langar, Wagah Border ceremony, and the warmest hospitality in India.</p>
+            <a href="{% url 'amritsar' %}">Explore Amritsar</a>
         </div>
     </div>
 
@@ -440,42 +351,35 @@
         <img src="{% static 'images/rishikesh.jpg' %}" alt="Rishikesh">
         <div class="card-content">
             <h2>Rishikesh</h2>
-            <p>Yoga capital, river rafting, and Ganga aarti.</p>
-            <!-- <span class="price-badge">₹19,999</span> -->
-            <a href="{% url 'rishikesh' %}">Read More</a>
+            <p>Yoga capital of the world. River rafting on the Ganges, meditation retreats, Ganga aarti, and adventure amidst spiritual serenity.</p>
+            <a href="{% url 'rishikesh' %}">Explore Rishikesh</a>
         </div>
     </div>
 
-
   <div class="card">
-  <img src="{% static 'images/kolkata.jpg' %}" alt="Jaipur">
+  <img src="{% static 'images/kolkata.jpg' %}" alt="Kolkata">
   <div class="card-content">
   <h2>Kolkata</h2>
-  <p>The City of Joy, famous for culture & sweets.</p>
-  <!-- <span class="price-badge">₹9,499</span> -->
-  <a href="{% url 'kolkata' %}">Read More</a>
+  <p>The City of Joy—colonial charm, literary heritage, and passionate culture. From Durga Puja to Howrah Bridge, experience Bengal's soul.</p>
+  <a href="{% url 'kolkata' %}">Explore Kolkata</a>
   </div>
   </div>
-
 
   <div class="card">
-  <img src="{% static 'images/darjeeling.jpg' %}" alt="Jaipur">
+  <img src="{% static 'images/darjeeling.jpg' %}" alt="Darjeeling">
   <div class="card-content">
   <h2>Darjeeling</h2>
-  <p>Queen of Hills, known for tea gardens & scenic beauty.</p>
-  <!-- <span class="price-badge">₹12,999</span> -->
-  <a href="{% url 'darjeeling' %}">Read More</a>
+  <p>Queen of the Hills. Misty tea estates, the toy train, Kanchenjunga views, and the world's finest Darjeeling tea await in the Eastern Himalayas.</p>
+  <a href="{% url 'darjeeling' %}">Explore Darjeeling</a>
   </div>
   </div>
-
 
 <div class="card">
   <img src="{% static 'images/mumbai.jpg' %}" alt="Mumbai">
   <div class="card-content">
     <h2>Mumbai</h2>
-    <p>The City of Dreams, famous for Bollywood & beaches.</p>
-    <!-- <span class="price-badge">₹10,999</span> -->
-    <a href="{% url 'mumbai' %}">Read More</a>
+    <p>The City of Dreams. Bollywood, Marine Drive, colonial architecture, and the energy of India's financial capital—where ambition meets the sea.</p>
+    <a href="{% url 'mumbai' %}">Explore Mumbai</a>
   </div>
 </div>
 
@@ -618,66 +522,15 @@ Guest name from Australia
     });
 </script>
 
-<footer>
-    <p>&copy; 2025 Travel2India. All rights reserved.</p>
-    <p><a href="{% url 'contact' %}">📩 Contact Us</a></p>
-
-    <section class="newsletter">
-  <h2>Subscribe to Our Newsletter</h2>
-  <p>Get the latest travel updates, offers, and tips!</p>
-  <form method="post" action="{% url 'subscribe' %}">
-    {% csrf_token %}
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Subscribe</button>
-  </form>
-</section>
-
-
 {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
+<ul class="messages" style="max-width: 600px; margin: 20px auto; padding: 0; list-style: none;">
+  {% for message in messages %}
+  <li style="padding: 12px; background: rgba(13,110,253,0.1); border-radius: 8px; margin-bottom: 8px;">{{ message }}</li>
+  {% endfor %}
+</ul>
 {% endif %}
-</footer>
 
-<footer class="footer">
-  <div class="footer-container">
-    <h3>Travel2India 🌏</h3>
-    <p>Discover the best places in India with us!</p>
-    <ul class="footer-links">
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'destinations' %}">Destinations</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-      <li><a href="{% url 'inquiry' %}">Inquiry</a></li>
-      <li><a href="{% url 'login' %}">Login</a></li>
-    </ul>
-    <p class="copyright">
-      &copy; {{ year }} Travel2India. All rights reserved.
-    </p>
-  </div>
-  <div class="social-icons">
-    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://youtube.com" target="_self"><i class="fab fa-youtube"></i></a>
-  </div>
-
-  <div class="share-buttons">
-  <p>Share this page:</p>
-  <a href="https://wa.me/?text=Check%20this%20awesome%20Travel%20website%20https://yourwebsite.com" target="_blank" class="whatsapp-share">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
-  <a href="mailto:?subject=Check%20Travel2India&body=Visit%20this%20awesome%20website%20https://yourwebsite.com" class="email-share">
-    <i class="fas fa-envelope"></i> Email
-  </a>
-</div>
-
-<!-- Chatbot Button -->
 <button class="chatbot-toggle" onclick="toggleChatbot()">💬 Chat with us</button>
-
-<!-- Chatbot Container -->
 <div id="chatbot" class="chatbot">
   <div class="chat-header">Travel2India Chatbot <span onclick="toggleChatbot()">❌</span></div>
   <div class="chat-body" id="chat-body">
@@ -688,66 +541,12 @@ Guest name from Australia
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
-
+{% endblock %}
+{% block extra_scripts %}
 <script>
-function toggleChatbot() {
-  const chatbot = document.getElementById('chatbot');
-  chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
-}
-
-function sendMessage() {
-  const userInput = document.getElementById('user-input');
-  const chatBody = document.getElementById('chat-body');
-  const message = userInput.value.trim();
-  if (message) {
-    chatBody.innerHTML += `<div class="user-message">${message}</div>`;
-    const reply = getBotReply(message);
-    chatBody.innerHTML += `<div class="bot-message">${reply}</div>`;
-    chatBody.scrollTop = chatBody.scrollHeight;
-    userInput.value = '';
-  }
-}
-
-function handleKeyPress(event) {
-  if (event.key === 'Enter') {
-    sendMessage();
-  }
-}
-
-function getBotReply(message) {
-  const lowerMsg = message.toLowerCase();
-  if (lowerMsg.includes('hello') || lowerMsg.includes('hi')) {
-    return 'Hello! Welcome to Travel2India 🌏';
-  } else if (lowerMsg.includes('book') || lowerMsg.includes('ticket')) {
-    return 'You can book tickets via our Flight Booking page ✈️.';
-  } else if (lowerMsg.includes('destination') || lowerMsg.includes('place')) {
-    return 'We offer destinations like Goa, Kerala, Ladakh, and many more.';
-  } else if (lowerMsg.includes('contact')) {
-    return 'Please visit our Contact Us page for help ☎️.';
-  } else {
-    return 'Sorry, I didn’t get that. Try asking about "destinations" or "booking".';
-  }
-}
+function toggleChatbot(){var c=document.getElementById('chatbot');c.style.display=c.style.display==='block'?'none':'block';}
+function sendMessage(){var u=document.getElementById('user-input'),b=document.getElementById('chat-body'),m=u.value.trim();if(m){b.innerHTML+='<div class="user-message">'+m+'</div>';var r=(m.toLowerCase().includes('hello')||m.toLowerCase().includes('hi'))?'Hello! Welcome to Travel2India 🌏':(m.toLowerCase().includes('book')||m.toLowerCase().includes('ticket'))?'You can book tickets via our Flight Booking page ✈️.':(m.toLowerCase().includes('destination')||m.toLowerCase().includes('place'))?'We offer destinations like Goa, Kerala, Ladakh, and many more.':(m.toLowerCase().includes('contact'))?'Please visit our Contact Us page for help ☎️.':'Sorry, try asking about destinations or booking.';b.innerHTML+='<div class="bot-message">'+r+'</div>';b.scrollTop=b.scrollHeight;u.value='';}}
+function handleKeyPress(e){if(e.key==='Enter')sendMessage();}
 </script>
-
-
-</footer>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    if (document.body.classList.contains('dark-mode')) {
-      toggleBtn.textContent = '☀️ Light Mode';
-    } else {
-      toggleBtn.textContent = '🌙 Dark Mode';
-    }
-  });
-</script>
-
-
-
-
-</body>
-</html>
+{% endblock %}
+n’t 

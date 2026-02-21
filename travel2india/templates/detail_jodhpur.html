@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Jodhpur - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Jodhpur</h1></header>
-<div class="container">
-    <img src="{% static 'images/jodhpur.jpg' %}" alt="Jodhpur" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Jodhpur, the Blue City, is renowned for its majestic forts and vibrant blue houses.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Jodhpur{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/jodhpur.jpg' %}" alt="Jodhpur" class="hero-img">
+    <h1>Jodhpur</h1>
+    <p class="hero-tagline">The Blue City—where Mehrangarh Fort watches over indigo lanes and royal heritage.</p>
+    <p class="intro">Jodhpur, the Blue City, spreads beneath the imposing Mehrangarh Fort—one of India's most impressive fortresses. The old city's blue-painted houses create a striking contrast against the desert landscape, while narrow lanes lead to spice markets, handicraft bazaars, and hidden temples. Visit the opulent Umaid Bhawan Palace, explore the fort's museums and palanquin galleries, and savor authentic Marwari cuisine. Jodhpur is Rajasthan at its most dramatic and atmospheric.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Mehrangarh Fort (world-class museum)</li>
+                <li>Sardar Market & Clock Tower</li>
+                <li>Jaswant Thada (Marble Memorial)</li>
+                <li>Umaid Bhawan Palace</li>
+                <li>Blue city walk & rooftop views</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Pleasant desert climate</li>
+                <li><strong>Oct:</strong> Marwar Festival (music & culture)</li>
+                <li><strong>Avoid:</strong> Apr–Jun (very hot)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2 days:</strong> Fort, markets, key sights</li>
+                <li><strong>2–3 days:</strong> Add Mandore, cooking class, village safari</li>
+                <li>Gateway to Jaisalmer & Thar Desert</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Jodhpur" class="btn-inquiry">Plan My Jodhpur Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

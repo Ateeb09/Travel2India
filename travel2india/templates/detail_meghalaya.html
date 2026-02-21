@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Meghalaya - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Meghalaya</h1></header>
-<div class="container">
-    <img src="{% static 'images/meghalaya.jpg' %}" alt="Meghalaya" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Known as the ‘abode of clouds’, Meghalaya is home to stunning waterfalls, caves, and the world-famous living root bridges. A hidden gem in Northeast India.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Meghalaya{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/meghalaya.jpg' %}" alt="Meghalaya" class="hero-img">
+    <h1>Meghalaya</h1>
+    <p class="hero-tagline">Abode of Clouds—living root bridges, cascading waterfalls, and the wettest place on Earth.</p>
+    <p class="intro">Meghalaya, the Abode of Clouds, is a lush wonderland of waterfalls, rainforests, and living root bridges that seem plucked from a fantasy. Cherrapunji (Sohra) receives some of the highest rainfall on the planet; Mawlynnong is Asia's cleanest village; and Nongriat's double-decker root bridge is a trekker's reward. Crystal-clear rivers, dramatic gorges, and Khasi hospitality make Meghalaya one of India's most underrated gems—perfect for nature lovers and adventurers.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Living Root Bridges (Nongriat, Mawlynnong)</li>
+                <li>Nohkalikai & Seven Sisters Falls</li>
+                <li>Mawlynnong (cleanest village)</li>
+                <li>Cherrapunji (Sohra) viewpoints</li>
+                <li>Dawki (crystal-clear Umngot River)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–May:</strong> Post-monsoon to pre-monsoon, pleasant</li>
+                <li><strong>Nov–Feb:</strong> Cool, clear skies, waterfalls still flowing</li>
+                <li><strong>Jun–Sep:</strong> Monsoon magic, maximum waterfalls (treks slippery)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>4–5 days:</strong> Shillong, Cherrapunji, root bridges</li>
+                <li><strong>5–7 days:</strong> Add Mawlynnong, Dawki, Nongriat trek</li>
+                <li>Gateway: Guwahati (Assam)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Meghalaya" class="btn-inquiry">Plan My Meghalaya Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

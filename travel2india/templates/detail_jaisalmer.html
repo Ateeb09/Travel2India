@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Jaisalmer - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Jaisalmer</h1></header>
-<div class="container">
-    <img src="{% static 'images/jaisalmer.jpg' %}" alt="Jaisalmer" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Jaisalmer, known as the Golden City, is famous for its stunning sandstone architecture and desert adventures.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Jaisalmer{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/jaisalmer.jpg' %}" alt="Jaisalmer" class="hero-img">
+    <h1>Jaisalmer</h1>
+    <p class="hero-tagline">The Golden City—rising from the Thar Desert like a sandcastle dream come true.</p>
+    <p class="intro">Jaisalmer emerges from the vast Thar Desert in shades of honey and gold—a living fort, ancient havelis, and endless dunes. The massive Jaisalmer Fort is one of the world's few inhabited forts, with homes, shops, and temples still thriving within its walls. Venture into the desert on camel safari for sunset over the dunes, sleep under a canopy of stars, and experience Rajasthani culture at its most authentic. Jaisalmer is raw, romantic, and utterly unforgettable.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Jaisalmer Fort (living fort)</li>
+                <li>Patwon Ki Haveli & Salim Singh Ki Haveli</li>
+                <li>Camel safari & dunes (Sam, Khuri)</li>
+                <li>Gadisar Lake</li>
+                <li>Desert Cultural Centre</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Cool desert weather, ideal for safaris</li>
+                <li><strong>Jan–Feb:</strong> Desert Festival (usually Feb)</li>
+                <li><strong>Avoid:</strong> Apr–Jun (extreme heat 45°C+)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Fort, havelis, one-night desert camp</li>
+                <li><strong>3–4 days:</strong> Extended safari, village visits</li>
+                <li>Combine with Jodhpur for Rajasthan desert circuit</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Jaisalmer" class="btn-inquiry">Plan My Jaisalmer Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

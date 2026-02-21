@@ -1,23 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Message Sent - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header>
-    <h1>Thank You!</h1>
-</header>
 
-<div class="container">
-    <p>Your message has been received. We'll get back to you shortly. 📨</p>
-    <a href="/" class="back-btn">← Back to Home</a>
+{% block title %}Message Sent{% endblock %}
+
+{% block content %}
+<div class="contact-page-modern" style="text-align: center; padding: 60px 40px;">
+    <i class="fas fa-check-circle" style="font-size: 4rem; color: #28a745; margin-bottom: 20px;"></i>
+    <h1 style="font-family: var(--font-display); margin-bottom: 12px;">Thank You!</h1>
+    <p style="color: #666; font-size: 1.1rem; margin-bottom: 24px;">Your message has been received. We'll get back to you shortly.</p>
+    <a href="{% url 'home' %}" class="btn-send" style="display: inline-block; text-decoration: none; width: auto; padding: 14px 32px;"><i class="fas fa-home"></i> Back to Home</a>
 </div>
-<footer>
-    <p>&copy; 2025 Travel2India. All rights reserved.</p>
-    <p><a href="{% url 'contact' %}">📩 Contact Us</a></p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

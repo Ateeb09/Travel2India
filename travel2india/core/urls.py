@@ -34,10 +34,5 @@ urlpatterns = [
     path('kolkata/', views.kolkata, name='kolkata'),
     path('darjeeling/', views.darjeeling, name='darjeeling'),
     path('mumbai/', views.mumbai, name='mumbai'),
+    path('subscribe/success/', views.subscribe_success, name='subscribe_success'),
 ]
-
-
-
-path('contact/', views.contact_view, name='contact'),
-path('enquiry/', views.inquiry_view, name='inquiry'),
-path('flight-booking/', views.flight_booking_view, name='flight_booking'),

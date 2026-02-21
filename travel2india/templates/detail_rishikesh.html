@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Rishikesh - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Rishikesh</h1></header>
-<div class="container">
-    <img src="{% static 'images/rishikesh.jpg' %}" alt="Rishikesh" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Located in the Himalayan foothills, Rishikesh is the Yoga Capital of the World. Known for river rafting, Ganga aarti, and peaceful vibes.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Rishikesh{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/rishikesh.jpg' %}" alt="Rishikesh" class="hero-img">
+    <h1>Rishikesh</h1>
+    <p class="hero-tagline">Yoga capital of the world—where the Ganges meets adventure and spirituality.</p>
+    <p class="intro">Rishikesh, nestled in the Himalayan foothills, is where the Ganges leaves the mountains and enters the plains. It's the global capital of yoga—ashrams line the banks, and meditation retreats draw seekers from around the world. Yet Rishikesh also thrills: white-water rafting on the Ganges, bungee jumping, trekking, and the mesmerizing evening Ganga Aarti at Triveni Ghat. Whether you seek peace or adrenaline, Rishikesh delivers in the shadow of the Himalayas.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Evening Ganga Aarti (Triveni Ghat)</li>
+                <li>Lakshman Jhula & Ram Jhula (suspension bridges)</li>
+                <li>White-water rafting (Mar.–Jun.)</li>
+                <li>Yoga & meditation retreats</li>
+                <li>Beatles Ashram (Chaurasi Kutiya)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Sep–Nov, Feb–Jun:</strong> Pleasant, ideal for yoga & rafting</li>
+                <li><strong>Mar–Jun:</strong> Best for rafting (snowmelt)</li>
+                <li><strong>Avoid:</strong> Jul–Aug (monsoon, rafting restricted)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Aarti, bridges, yoga class, rafting</li>
+                <li><strong>4–7 days:</strong> Yoga retreat, trekking, Haridwar combine</li>
+                <li>Easy add-on from Delhi (5–6 hrs)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Rishikesh" class="btn-inquiry">Plan My Rishikesh Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

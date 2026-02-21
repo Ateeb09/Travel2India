@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Jaipur - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Jaipur</h1></header>
-<div class="container">
-    <img src="{% static 'images/jaipur.jpg' %}" alt="Jaipur" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Jaipur, also known as the Pink City, is famous for its palaces, forts, and rich cultural heritage.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Jaipur{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/jaipur.jpg' %}" alt="Jaipur" class="hero-img">
+    <h1>Jaipur</h1>
+    <p class="hero-tagline">The Pink City—where Rajput pride, royal palaces, and vibrant bazaars create a regal tapestry.</p>
+    <p class="intro">Jaipur, the capital of Rajasthan, dazzles with its pink-hued facades, massive forts, and opulent palaces. From the majestic Amber Fort atop the hills to the delicate honeycomb of Hawa Mahal, every corner tells a story of valor and artistry. Explore bustling Johari Bazaar for gemstones and textiles, dine like royalty in heritage havelis, and witness puppet shows and folk performances. Jaipur is the jewel of the Golden Triangle and the perfect introduction to Rajasthan's grandeur.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Amber Fort (with elephant or jeep)</li>
+                <li>Hawa Mahal (Palace of Winds)</li>
+                <li>City Palace & Jantar Mantar</li>
+                <li>Albert Hall Museum</li>
+                <li>Johari Bazaar & traditional markets</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Ideal weather for forts & palaces</li>
+                <li><strong>Jan:</strong> Cool, clear skies, great for photography</li>
+                <li><strong>Avoid:</strong> Apr–Jun (extreme heat)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Key monuments + bazaars</li>
+                <li><strong>3–4 days:</strong> Add Nahargarh, block printing, cooking demo</li>
+                <li>Hub for Rajasthan circuit (Jodhpur, Udaipur)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Jaipur" class="btn-inquiry">Plan My Jaipur Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

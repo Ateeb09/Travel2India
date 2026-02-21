@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kolkata - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Kolkata</h1></header>
-<div class="container">
-    <!-- <div class="badge">Top Destination 🌆</div> -->
-    <img src="{% static 'images/kolkata.jpg' %}" alt="Kolkata" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
 
-    <p style="margin-top:20px;">
-        Kolkata, the cultural capital of India, is known for its colonial architecture, art galleries, temples, and vibrant festivals. Don’t miss Victoria Memorial and Howrah Bridge.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+{% block title %}Kolkata{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/kolkata.jpg' %}" alt="Kolkata" class="hero-img">
+    <h1>Kolkata</h1>
+    <p class="hero-tagline">The City of Joy—colonial grandeur, literary heritage, and Bengal's passionate soul.</p>
+    <p class="intro">Kolkata is India's cultural capital—a city of poets, revolutionaries, and relentless spirit. Colonial architecture lines grand avenues; Howrah Bridge spans the Hooghly; and tram cars still rattle through neighborhoods. From the Victoria Memorial to Durga Puja pandals, from sweet shops to intellectual adda (conversation), Kolkata wears its history and heart on its sleeve. Experience the warmth of Bengali hospitality, savor rasgulla and fish curry, and discover why it's called the City of Joy.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Victoria Memorial</li>
+                <li>Howrah Bridge & flower market</li>
+                <li>Indian Museum (oldest in India)</li>
+                <li>Kali Temple (Dakshineswar)</li>
+                <li>Park Street, College Street (books & culture)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Pleasant weather</li>
+                <li><strong>Oct (Navratri):</strong> Durga Puja—Kolkata's biggest festival</li>
+                <li><strong>Avoid:</strong> Apr–Jun (hot & humid), Jul–Sep (monsoon)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Key monuments, markets, food</li>
+                <li><strong>4–5 days:</strong> Add day trip to Sunderbans or Shantiniketan</li>
+                <li>Gateway to East India—Darjeeling, Sikkim, Odisha</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Kolkata" class="btn-inquiry">Plan My Kolkata Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

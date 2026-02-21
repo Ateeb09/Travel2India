@@ -1,20 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ranthambore - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Ranthambore National Park</h1></header>
-<div class="container">
-    <img src="{% static 'images/ranthambore.jpg' %}" alt="Ranthambore" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Ranthambore is one of the best places in India to spot tigers in the wild. The park also features ancient ruins and diverse wildlife, perfect for nature lovers.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Ranthambore{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/ranthambore.jpg' %}" alt="Ranthambore" class="hero-img">
+    <h1>Ranthambore</h1>
+    <p class="hero-tagline">Where the royal Bengal tiger reigns—India's finest tiger reserve, ancient ruins, and thrilling safaris.</p>
+    <p class="intro">Ranthambore National Park is one of India's best places to spot the Bengal tiger in the wild. Amidst dry deciduous forests and ancient ruins, the big cats move through their territory—and safari jeeps offer front-row seats. Beyond tigers, spot leopards, sloth bears, crocodiles, and over 300 species of birds. The 10th-century Ranthambore Fort overlooks the park, adding a historic backdrop to an already magical wilderness. A visit here is a wildlife lover's dream.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Morning & evening jungle safaris</li>
+                <li>Ranthambore Fort (within park)</li>
+                <li>Padam Talao (lotus lake)</li>
+                <li>Rajbagh Lake (tiger sightings)</li>
+                <li>Surwal Lake (birding)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Jun:</strong> Park open (closed Jul–Sep monsoon)</li>
+                <li><strong>Mar–May:</strong> Best tiger sightings (dry, animals at water)</li>
+                <li><strong>Oct–Feb:</strong> Pleasant weather, good wildlife</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> 3–4 safaris for best tiger odds</li>
+                <li><strong>3–4 days:</strong> Add Ranthambore Fort, Bharatpur bird sanctuary</li>
+                <li>Combine with Jaipur, Agra for heritage + wildlife</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Ranthambore" class="btn-inquiry">Plan My Ranthambore Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-
-
-</body>
-</html>
+{% endblock %}

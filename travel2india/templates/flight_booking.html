@@ -1,35 +1,55 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Flight Tickets Booking - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-</head>
-<body>
-<header>
-    <h1>Flight Tickets Booking</h1>
-</header>
 
-<div class="flight-booking-container">
-    <form method="post">
+{% block title %}Book Flights{% endblock %}
+
+{% block content %}
+<div class="flight-booking-modern">
+    <div class="page-header">
+        <i class="fas fa-plane-departure"></i>
+        <h1>Book Your Flight</h1>
+        <p style="color: #666;">Search and book flights across India</p>
+    </div>
+
+    {% if success %}
+    <div class="success-message">
+        <i class="fas fa-check-circle"></i> {{ success }}
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'flight_booking' %}">
         {% csrf_token %}
-        <label for="from">From:</label>
-        <input type="text" id="from" name="from" placeholder="City of Departure" required>
-
-        <label for="to">To:</label>
-        <input type="text" id="to" name="to" placeholder="Destination City" required>
-
-        <label for="date">Departure Date:</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="passengers">Number of Passengers:</label>
-        <input type="number" id="passengers" name="passengers" min="1" max="10" required>
-
-        <button type="submit" class="btn">Book Flight</button>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="from"><i class="fas fa-map-marker-alt"></i> From</label>
+                <input type="text" id="from" name="from" placeholder="e.g. Delhi, Mumbai" required>
+            </div>
+            <div class="form-group">
+                <label for="to"><i class="fas fa-map-marker-alt"></i> To</label>
+                <input type="text" id="to" name="to" placeholder="e.g. Goa, Kerala" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="date"><i class="fas fa-calendar-alt"></i> Departure Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="passengers"><i class="fas fa-users"></i> Passengers</label>
+                <input type="number" id="passengers" name="passengers" min="1" max="10" value="1" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user"></i> Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Full name (optional)">
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" name="email" placeholder="For confirmation (optional)">
+            </div>
+        </div>
+        <button type="submit" class="btn-book"><i class="fas fa-plane"></i> Request Booking</button>
     </form>
 </div>
-
-<a href="/" class="back-btn">← Back to Home</a>
-</body>
-</html>
+{% endblock %}

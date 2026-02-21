@@ -64,6 +64,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'core.context_processors.site_context',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -140,6 +141,9 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ateebahmad009@gmail.com'  # Your Gmail
 EMAIL_HOST_PASSWORD = 'wxmw ovgr awpj wjfu'  # Gmail App Password (not your login password)
+
+# Email for receiving all website notifications (contact, bookings, subscriptions, etc.)
+ADMIN_NOTIFICATION_EMAIL = 'ateebahmad009@gmail.com'
 
 
 

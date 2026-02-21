@@ -1,18 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Agra - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Agra</h1></header>
-<div class="container">
-    <img src="{% static 'images/agra.jpg' %}" alt="Agra" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-    <p style="margin-top:20px;">
-        Agra is world-famous for the Taj Mahal, a UNESCO World Heritage site and symbol of eternal love, along with other Mughal-era monuments.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+
+{% block title %}Agra{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/agra.jpg' %}" alt="Agra Taj Mahal" class="hero-img">
+    <h1>Agra</h1>
+    <p class="hero-tagline">Home of the Taj Mahal—the world's most beautiful monument and an eternal symbol of love.</p>
+    <p class="intro">Agra is where Mughal grandeur reaches its zenith. The Taj Mahal needs no introduction—a marble masterpiece that changes hue with the light, from dawn's pink glow to moonlight's silver. Beyond the Taj, explore the mighty Agra Fort, the abandoned city of Fatehpur Sikri, and the tomb of Itmad-ud-Daulah. Walk through lanes where emperors once strode, and feel the weight of history in every stone. Agra is a pilgrimage for lovers of architecture, romance, and India's imperial past.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Taj Mahal (sunrise or sunset)</li>
+                <li>Agra Fort (Red Fort)</li>
+                <li>Fatehpur Sikri</li>
+                <li>Tomb of Itmad-ud-Daulah</li>
+                <li>Mehtab Bagh (Taj view gardens)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Oct–Mar:</strong> Best weather for exploring</li>
+                <li><strong>Feb:</strong> Pleasant, less fog than winter</li>
+                <li><strong>Avoid:</strong> Apr–Jun (scorching heat), Jul–Sep (humid monsoon)</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>1–2 days:</strong> Taj + Agra Fort + Fatehpur Sikri</li>
+                <li><strong>2–3 days:</strong> Leisurely pace, Mehtab Bagh sunset</li>
+                <li>Part of Golden Triangle (Delhi–Agra–Jaipur)</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Agra" class="btn-inquiry">Plan My Agra Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}

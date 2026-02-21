@@ -1,23 +1,45 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kerala Backwaters - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header><h1>Kerala Backwaters</h1></header>
-<div class="container">
-     <div class="badge">Top Destination 🌟</div>
-    <img src="{% static 'images/kerala.jpg' %}" alt="Kerala" style="max-width: 500%; height: 500px; width: 500px; border-radius: 12px; display: block; margin: 20px auto; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
 
-    <p style="margin-top:20px;">
-        The Kerala Backwaters are a unique ecosystem with palm-lined canals, houseboats, and peaceful villages. It's the perfect place for relaxation and traditional experiences.
-    </p>
-    <a href="/" class="back-btn">← Back to Home</a>
+{% block title %}Kerala Backwaters{% endblock %}
+
+{% block content %}
+<div class="dest-detail">
+    <img src="{% static 'images/kerala.jpg' %}" alt="Kerala Backwaters" class="hero-img">
+    <h1>Kerala Backwaters</h1>
+    <p class="hero-tagline">God's Own Country — where emerald canals, houseboats, and timeless villages create paradise on water.</p>
+    <p class="intro">The Kerala Backwaters are a breathtaking network of lagoons, lakes, and canals that wind through lush landscapes of coconut palms, paddy fields, and quaint villages. Glide along tranquil waters on a traditional Kettuvallam houseboat, witness ancient fishing techniques, and savor authentic Kerala cuisine prepared onboard. From Alleppey to Kumarakom, the backwaters offer a perfect blend of relaxation, culture, and natural beauty—a must-experience journey through one of India's most serene regions.</p>
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Must-See</h3>
+            <ul>
+                <li>Houseboat stays in Alleppey & Kumarakom</li>
+                <li>Kumarakom Bird Sanctuary</li>
+                <li>Vembanad Lake (India's longest lake)</li>
+                <li>Traditional village visits & coir-making</li>
+                <li>Ayurvedic wellness retreats</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Best Time to Visit</h3>
+            <ul>
+                <li><strong>Sept–Mar:</strong> Pleasant weather, ideal for houseboats</li>
+                <li><strong>June–Aug:</strong> Monsoon magic, lush greenery, fewer crowds</li>
+                <li><strong>Avoid:</strong> Peak summer (Apr–May) for intense heat</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Suggested Duration</h3>
+            <ul>
+                <li><strong>2–3 days:</strong> Houseboat experience + one night</li>
+                <li><strong>4–5 days:</strong> Add Kumarakom, village tours, Ayurveda</li>
+                <li>Combine with Munnar or Thekkady for a week</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-row">
+        <a href="{% url 'inquiry' %}?destination=Kerala%20Backwaters" class="btn-inquiry">Plan My Kerala Trip</a>
+        <a href="{% url 'home' %}" class="btn-back">← All Destinations</a>
+    </div>
 </div>
-</div>
-
-
-</body>
-</html>
+{% endblock %}
