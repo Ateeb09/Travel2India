@@ -145,6 +145,10 @@ EMAIL_HOST_PASSWORD = 'wxmw ovgr awpj wjfu'  # Gmail App Password (not your logi
 # Email for receiving all website notifications (contact, bookings, subscriptions, etc.)
 ADMIN_NOTIFICATION_EMAIL = 'ateebahmad009@gmail.com'
 
+# Razorpay (use env in production: RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET)
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', '')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', '')
+
 
 
 

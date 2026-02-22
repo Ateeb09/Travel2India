@@ -216,15 +216,17 @@
     <p>Discover the most beautiful destinations in India!</p>
 </header>
 
-<!-- <nav>
-    <input type="text" id="searchInput" placeholder="Search destination...">
-</nav> -->
-<div class="search-container">
-  <form method="get" action="{% url 'search' %}">
-    <input type="text" name="q" placeholder="🔍 Search for a destination..." required>
-    <button type="submit">Search</button>
-  </form>
-</div>
+<section class="search-hero">
+  <div class="search-hero-inner">
+    <label class="search-hero-label" for="searchInput">Find your next destination</label>
+    <div class="search-hero-bar">
+      <i class="fas fa-search search-hero-icon"></i>
+      <input type="text" id="searchInput" name="q" placeholder="Search Kerala, Goa, Ladakh, Rajasthan..." autocomplete="off" aria-label="Search destinations">
+      <a href="{% url 'search' %}" id="searchSubmitLink" class="search-hero-btn">Search</a>
+    </div>
+    <p class="search-hero-hint">Type to filter destinations below, or click Search for full results</p>
+  </div>
+</section>
 
 <section id="destinations" class="py-5">
 <div class="card-container">
@@ -403,79 +405,50 @@
 </section> -->
 
 
-<section class="reviews-section">
-    <h2>What Our Travelers Say
-      - Ms Kelly Angela Hayes and her friends 
-Guest name from Australia
-    </h2>
+<section class="reviews-section" id="reviews">
+    <h2>What Our Travelers Say</h2>
+    <p class="reviews-section-sub">Real feedback from guests who explored India with us</p>
     <div class="reviews-container">
-      Hi Nav, thanks so much for organising the trip for us. Was unforgettable! Our feedback below - any questions or want more explanation just ask.
-      General
-      My singh was fantastic. He was thoughtful, always on time, courteous opening doors and carrying things for us, kept us very well hydrated with cold water everytime we entered the car. Went above and beyond when we had little requests. He made the trip what it was, we appreciated his input when we didnt have a guide to explain things on some of our longer overland trips. He was a fantastic and very safe driver in sometimes challenging conditions. Just fantastic and would recommend him everytime!
-      The local contacts were all lovely – didn’t always feel we needed to visit them as everyone was so welcome and we had constant contact with both Nav and Haseeb and Mr Singh was also in contact with everyone.
-      All flights were fine with no hiccups.
-      Communication with everyone was outstanding. So many moving pieces and you all communicated behind the scenes brilliantly and shared with us what we needed to know. Very much appreciated.
- 
-      Dehli
-      Was really nice meeting Haseeb at the airport. Nice to put a name to a face of the person we contacted prior and throughout.
-      Langer was fantastic. The guide was a little unsure when we wanted to go into the kitchen and this was the main reason we wanted to go there. He let us go in once someone waved us in, but wasn’t confident in the space.
- 
-      Varanasi
-      Guide was fantastic. Very knowledgeable, didn’t give too much information but when we asked questions was happy to explain further.
-      Accomodation was lovely right on the water. We didn’t need anything fancier than this, was great.
-      Train – very comfortable and easy and on time
- 
-      Agra
-      Was good having Mr Singh pick us up from the carriage as we already knew him and there was a lot of people around.
-      Very nice accommodation, great location so close to the Taj.
-      Guide was easily the best guide we have ever had in any country. His knowledge and passion were infectious, he knew when to give extra details, when to let us prompt and had soooooo much interesting and relevant knowledge. The Taj was the highlight of the trip, but Agra fort and Fatepur Sikr were also brilliant as the guide was able to bring them to life.
-
-      Jaipur
-      Accommodation was lovely, however we felt it was a little far out of town and had to have Mr Singh or a tuk tuk to get anywhere. We would have like to be able to walk to places.
-      Guide wasn’t as passionate as the other guides we had. He didn’t seem as interested in sharing his town or the history of the monuments we visited. To be very blunt, we wouldn’t recommend using this guide.
-      Cooking demonstration. This was also a little disappointing. The family were lovely, but very western. They didn’t share traditional Indian culture with us very much. The food was absolutely delicious, but I had to ask to be involved in rolling Paratha and they seemed shocked I would want to do that.
- 
-      Puskhar
-      Accommodation was beautiful, but we felt here it would be nice to be closer to the lake so we could just easily walk around as we wanted.
-      Guide was interesting and passionate. He did give slightly too much information and we had to request not to stand in the rain at one point when we were soaked through and getting cold. But he was lovely and would recommend him to others.
-      We caught the gondola/walked to Brahmas wifes temple on top of the mountain, would potentially recommend this as part of a tour as it was great.
- 
-      Udaipur
-      Accommodation was fantastic, beautiful and loved being able to walk to everything – a lovely way to end the holiday.
-      Guide was once again fantastic and gave the perfect amount of information and able to share more details when we asked questions. He was passionate and lovely.
-        <!-- <div class="review-card">
-            <p>"The mountain trek was breathtaking! An unforgettable experience."</p>
-            <h4>- </h4>
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Thanks so much for organising the trip for us — it was unforgettable! Mr Singh was fantastic: thoughtful, always on time, and a very safe driver. Communication was outstanding."</p>
+            <h4>— Ms Kelly Angela Hayes & friends</h4>
+            <span class="review-loc">Australia</span>
         </div>
         <div class="review-card">
-            <p>"Jaipur's heritage tour was expertly curated. Highly recommend!"</p>
-            <h4>- </h4>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"The Agra guide was easily the best we have ever had in any country. His knowledge and passion were infectious. The Taj was the highlight — Agra Fort and Fatehpur Sikri were also brilliant."</p>
+            <h4>— Ms Kelly Angela Hayes & friends</h4>
+            <span class="review-loc">Australia</span>
         </div>
         <div class="review-card">
-            <p>"Goa's beaches were perfect for relaxation. Travel2India delivered!"</p>
-            <h4>- </h4>
-        </div> -->
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Varanasi guide was fantastic and very knowledgeable. Accommodation was lovely right on the water. Train was comfortable and on time. Udaipur was a lovely way to end the holiday."</p>
+            <h4>— Ms Kelly Angela Hayes & friends</h4>
+            <span class="review-loc">Australia</span>
+        </div>
     </div>
 </section>
 
 
-<section class="packages-section">
+<section class="packages-section" id="packages">
     <h2>Popular Packages</h2>
+    <p class="packages-section-sub">Choose a package and send an inquiry — we’ll tailor it for you</p>
     <div class="package-card-container">
         <div class="package-card">
             <h3>Kerala Backwaters</h3>
             <p>5 Days | 4 Nights</p>
-            <button>Book Now</button>
+            <a href="{% url 'inquiry' %}?destination=Kerala%20Backwaters" class="package-card-btn">Book Now</a>
         </div>
         <div class="package-card">
             <h3>Darjeeling Delight</h3>
-            <p>4 Days | 3 nights </p>
-            <button>Book Now</button>
+            <p>4 Days | 3 Nights</p>
+            <a href="{% url 'inquiry' %}?destination=Darjeeling" class="package-card-btn">Book Now</a>
         </div>
         <div class="package-card">
             <h3>Goa Beach Escape</h3>
-            <p>3 Days | 2 nights </p>
-            <button>Book Now</button>
+            <p>3 Days | 2 Nights</p>
+            <a href="{% url 'inquiry' %}?destination=Goa" class="package-card-btn">Book Now</a>
         </div>
     </div>
 </section>
@@ -510,16 +483,26 @@ Guest name from Australia
 </div>
 
 <script>
-    const searchInput = document.getElementById('searchInput');
-    const cards = document.querySelectorAll('.card');
-
-    searchInput.addEventListener('keyup', function () {
-        const query = this.value.toLowerCase();
-        cards.forEach(card => {
-            const title = card.querySelector('h2').textContent.toLowerCase();
-            card.style.display = title.includes(query) ? 'block' : 'none';
+(function() {
+    var searchInput = document.getElementById('searchInput');
+    var searchLink = document.getElementById('searchSubmitLink');
+    var cards = document.querySelectorAll('#destinations .card');
+    if (searchInput && cards.length) {
+        searchInput.addEventListener('input', function() {
+            var query = this.value.toLowerCase().trim();
+            cards.forEach(function(card) {
+                var title = card.querySelector('h2');
+                if (title) card.style.display = !query || title.textContent.toLowerCase().indexOf(query) !== -1 ? 'block' : 'none';
+            });
         });
-    });
+    }
+    if (searchInput && searchLink) {
+        searchLink.addEventListener('click', function(e) {
+        var q = searchInput.value.trim();
+        if (q) { searchLink.href = '{% url "search" %}?q=' + encodeURIComponent(q); }
+        });
+    }
+})();
 </script>
 
 {% if messages %}
@@ -530,23 +513,7 @@ Guest name from Australia
 </ul>
 {% endif %}
 
-<button class="chatbot-toggle" onclick="toggleChatbot()">💬 Chat with us</button>
-<div id="chatbot" class="chatbot">
-  <div class="chat-header">Travel2India Chatbot <span onclick="toggleChatbot()">❌</span></div>
-  <div class="chat-body" id="chat-body">
-    <div class="bot-message">Hello! How can I help you today?</div>
-  </div>
-  <div class="chat-input">
-    <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-</div>
 {% endblock %}
 {% block extra_scripts %}
-<script>
-function toggleChatbot(){var c=document.getElementById('chatbot');c.style.display=c.style.display==='block'?'none':'block';}
-function sendMessage(){var u=document.getElementById('user-input'),b=document.getElementById('chat-body'),m=u.value.trim();if(m){b.innerHTML+='<div class="user-message">'+m+'</div>';var r=(m.toLowerCase().includes('hello')||m.toLowerCase().includes('hi'))?'Hello! Welcome to Travel2India 🌏':(m.toLowerCase().includes('book')||m.toLowerCase().includes('ticket'))?'You can book tickets via our Flight Booking page ✈️.':(m.toLowerCase().includes('destination')||m.toLowerCase().includes('place'))?'We offer destinations like Goa, Kerala, Ladakh, and many more.':(m.toLowerCase().includes('contact'))?'Please visit our Contact Us page for help ☎️.':'Sorry, try asking about destinations or booking.';b.innerHTML+='<div class="bot-message">'+r+'</div>';b.scrollTop=b.scrollHeight;u.value='';}}
-function handleKeyPress(e){if(e.key==='Enter')sendMessage();}
-</script>
 {% endblock %}
 n’t 

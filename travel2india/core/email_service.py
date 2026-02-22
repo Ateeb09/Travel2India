@@ -84,3 +84,14 @@ def notify_user_login(username):
 Username: {username}
 """
     send_admin_notification('User Logged In', body)
+
+
+def notify_payment_captured(order_id, amount_inr, email=''):
+    """Notify when a payment is successfully captured."""
+    body = f"""Payment Received
+━━━━━━━━━━━━━━━━━━━━━━━━━
+Order ID: {order_id}
+Amount: ₹{amount_inr}
+Email: {email or 'N/A'}
+"""
+    send_admin_notification('Payment Received', body)

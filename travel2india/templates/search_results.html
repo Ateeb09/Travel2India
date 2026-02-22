@@ -1,17 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search{% if query %} – {{ query }}{% endif %}{% endblock %}
 
 {% block content %}
-<div class="search-results">
-    <h2>Search Results for "{{ query }}"</h2>
-    {% if results %}
-        <ul>
-            {% for result in results %}
-                <li><strong>{{ result.name }}</strong>: {{ result.description }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No results found.</p>
-    {% endif %}
-</div>
-{% endblock %}
+<section class="search-results-page">
+    <div class="search-results-hero">
+        <h1>
+            {% if query %}
+                {% if results %}
+                    We found {{ results|length }} destination{{ results|length|pluralize }} for “{{ query }}”
+                {% else %}
+                    No destination matched “{{ query }}”
+                {% endif %}
+            {% else %}
+                Search destinations
+            {% endif %}
+        </h1>
+        <p class="search-results-sub">
+            {% if results %}
+                Choose one to see full details, best time to visit, and plan your trip.
+            {% elif query %}
+                Try another keyword (e.g. Kerala, Goa, Taj, Ladakh) or explore all destinations below.
+            {% else %}
+                Use the search bar on the home page to find a destination.
+            {% endif %}
+        </p>
+    </div>
 
+    {% if results %}
+    <div class="search-results-grid">
+        {% for dest in results %}
+        <a href="{% url dest.url_name %}" class="search-result-card">
+            <div class="search-result-img-wrap">
+                <img src="{% static 'images/'|add:dest.image %}" alt="{{ dest.name }}">
+            </div>
+            <h3>{{ dest.name }}</h3>
+            <span class="search-result-cta">View details →</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if not results and all_destinations %}
+    <div class="search-results-suggest">
+        <h2>Explore all 17 destinations</h2>
+        <p class="search-results-suggest-sub">Click any destination to see beautiful details, must-see spots, and plan your trip.</p>
+        <div class="search-results-grid">
+            {% for dest in all_destinations %}
+            <a href="{% url dest.url_name %}" class="search-result-card">
+                <div class="search-result-img-wrap">
+                    <img src="{% static 'images/'|add:dest.image %}" alt="{{ dest.name }}">
+                </div>
+                <h3>{{ dest.name }}</h3>
+                <span class="search-result-cta">View details →</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if not results and not all_destinations %}
+    <div class="search-results-empty">
+        <a href="{% url 'home' %}" class="btn-inquiry">← Back to Home</a>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

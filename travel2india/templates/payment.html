@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Secure Payment{% endblock %}
+
+{% block content %}
+<div class="flight-booking-modern payment-page">
+    <div class="page-header">
+        <i class="fas fa-credit-card"></i>
+        <h1>Secure Payment</h1>
+        <p style="color: #666;">Pay your trip deposit or package amount via cards, UPI, or netbanking</p>
+    </div>
+
+    {% if not payment_enabled %}
+    <div class="success-message" style="background: #fff3cd; color: #856404; border-color: #ffc107;">
+        <i class="fas fa-info-circle"></i> Payment gateway is not configured yet. Please add <strong>RAZORPAY_KEY_ID</strong> and <strong>RAZORPAY_KEY_SECRET</strong> in your environment or settings to enable payments.
+    </div>
+    {% else %}
+    <form id="payment-form" method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="amount"><i class="fas fa-rupee-sign"></i> Amount (₹)</label>
+            <input type="number" id="amount" name="amount" min="1" step="1" placeholder="e.g. 5000" required>
+        </div>
+        <div class="form-group">
+            <label for="description"><i class="fas fa-tag"></i> Description (optional)</label>
+            <input type="text" id="description" name="description" placeholder="e.g. Kerala trip deposit, Package XYZ">
+        </div>
+        <div class="form-group">
+            <label for="pay_email"><i class="fas fa-envelope"></i> Your email (optional)</label>
+            <input type="email" id="pay_email" name="email" placeholder="For payment receipt">
+        </div>
+        <button type="submit" class="btn-book" id="pay-btn">
+            <i class="fas fa-lock"></i> Pay Securely with Razorpay
+        </button>
+    </form>
+
+    <div id="payment-success" class="success-message" style="display: none;">
+        <i class="fas fa-check-circle"></i> <span id="success-text">Payment successful! We will contact you shortly.</span>
+    </div>
+    <div id="payment-error" class="success-message" style="background: #f8d7da; color: #721c24; border-color: #f5c6cb; display: none;">
+        <i class="fas fa-exclamation-circle"></i> <span id="error-text"></span>
+    </div>
+    {% endif %}
+
+    <p style="text-align: center; margin-top: 24px;">
+        <a href="{% url 'home' %}" class="btn-back" style="display: inline-block;">← Back to Home</a>
+    </p>
+</div>
+
+{% if payment_enabled %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+(function() {
+  var form = document.getElementById('payment-form');
+  var payBtn = document.getElementById('pay-btn');
+  var successDiv = document.getElementById('payment-success');
+  var errorDiv = document.getElementById('payment-error');
+  var csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var amount = document.getElementById('amount').value;
+    var description = document.getElementById('description').value || 'Travel2India - Trip/Package payment';
+    var email = document.getElementById('pay_email').value || '';
+    if (!amount || parseInt(amount, 10) < 1) {
+      showError('Please enter a valid amount (at least ₹1).');
+      return;
+    }
+    payBtn.disabled = true;
+    payBtn.textContent = ' Creating order...';
+
+    var fd = new FormData();
+    fd.append('csrfmiddlewaretoken', csrf);
+    fd.append('amount', amount);
+    fd.append('description', description);
+    fd.append('email', email);
+
+    fetch('{% url "create_order" %}', { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.error) {
+          showError(data.error);
+          payBtn.disabled = false;
+          payBtn.innerHTML = ' <i class="fas fa-lock"></i> Pay Securely with Razorpay';
+          return;
+        }
+        var options = {
+          key: data.key_id,
+          amount: data.amount,
+          currency: data.currency || 'INR',
+          order_id: data.order_id,
+          name: 'Travel2India',
+          description: data.description || 'Trip/Package payment',
+          handler: function(res) {
+            var vd = new FormData();
+            vd.append('csrfmiddlewaretoken', csrf);
+            vd.append('razorpay_payment_id', res.razorpay_payment_id);
+            vd.append('razorpay_order_id', res.razorpay_order_id);
+            vd.append('razorpay_signature', res.razorpay_signature);
+            fetch('{% url "verify_payment" %}', { method: 'POST', body: vd, credentials: 'same-origin' })
+              .then(function(r) { return r.json(); })
+              .then(function(ver) {
+                if (ver.success) {
+                  successDiv.style.display = 'block';
+                  document.getElementById('success-text').textContent = 'Payment successful! Thank you. We will contact you shortly.';
+                  form.style.display = 'none';
+                } else {
+                  showError(ver.error || 'Verification failed.');
+                }
+              })
+              .catch(function() { showError('Verification request failed.'); });
+            payBtn.disabled = false;
+            payBtn.innerHTML = ' <i class="fas fa-lock"></i> Pay Securely with Razorpay';
+          },
+          prefill: { email: email || '' },
+          theme: { color: '#e85d04' }
+        };
+        var rzp = new Razorpay(options);
+        rzp.on('payment.failed', function() {
+          showError('Payment failed or was cancelled.');
+          payBtn.disabled = false;
+          payBtn.innerHTML = ' <i class="fas fa-lock"></i> Pay Securely with Razorpay';
+        });
+        rzp.open();
+        payBtn.textContent = ' Complete payment in popup...';
+      })
+      .catch(function() {
+        showError('Could not create order. Please try again.');
+        payBtn.disabled = false;
+        payBtn.innerHTML = ' <i class="fas fa-lock"></i> Pay Securely with Razorpay';
+      });
+  });
+
+  function showError(msg) {
+    document.getElementById('error-text').textContent = msg;
+    errorDiv.style.display = 'block';
+    successDiv.style.display = 'none';
+  }
+})();
+</script>
+{% endif %}
+{% endblock %}

@@ -14,7 +14,9 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('about/', views.about, name='about'),
     path('flight-booking/', views.flight_booking, name='flight_booking'),
-
+    path('payment/', views.payment_page, name='payment'),
+    path('payment/create-order/', views.create_order, name='create_order'),
+    path('payment/verify/', views.verify_payment, name='verify_payment'),
 
     # Destination Detail Pages
     path('kerala/', views.kerala, name='kerala'),

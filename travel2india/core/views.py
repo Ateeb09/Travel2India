@@ -1,19 +1,22 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
+from django.views.decorators.http import require_http_methods
 from datetime import datetime
+from decimal import Decimal
 
-from .models import Destination, ContactMessage, Inquiry
+from .models import Destination, ContactMessage, Inquiry, Payment
 from .email_service import (
     notify_contact_submitted,
     notify_inquiry_submitted,
     notify_flight_booking,
     notify_newsletter_subscription,
     notify_user_login,
+    notify_payment_captured,
 )
 
 
@@ -91,15 +94,50 @@ def about(request):
     return render(request, 'about.html')
 
 
+# All 17 destinations: name, URL name, image, and search keywords
+SEARCH_DESTINATIONS = [
+    {'name': 'Kerala Backwaters', 'url_name': 'kerala', 'image': 'kerala.jpg', 'keywords': 'kerala backwaters alleppey houseboat'},
+    {'name': 'Delhi', 'url_name': 'delhi', 'image': 'delhi.jpg', 'keywords': 'delhi capital red fort'},
+    {'name': 'Agra', 'url_name': 'agra', 'image': 'agra.jpg', 'keywords': 'agra taj mahal'},
+    {'name': 'Jaipur', 'url_name': 'jaipur', 'image': 'jaipur.jpg', 'keywords': 'jaipur pink city rajasthan'},
+    {'name': 'Jaisalmer', 'url_name': 'jaisalmer', 'image': 'jaisalmer.jpg', 'keywords': 'jaisalmer golden city desert'},
+    {'name': 'Jodhpur', 'url_name': 'jodhpur', 'image': 'jodhpur.jpg', 'keywords': 'jodhpur blue city'},
+    {'name': 'Udaipur', 'url_name': 'udaipur', 'image': 'udaipur.jpg', 'keywords': 'udaipur city of lakes'},
+    {'name': 'Varanasi', 'url_name': 'varanasi', 'image': 'varanasi.jpg', 'keywords': 'varanasi banaras ganges'},
+    {'name': 'Ladakh', 'url_name': 'ladakh', 'image': 'ladakh.jpg', 'keywords': 'ladakh leh pangong'},
+    {'name': 'Goa', 'url_name': 'goa', 'image': 'goa.jpg', 'keywords': 'goa beaches'},
+    {'name': 'Ranthambore', 'url_name': 'ranthambore', 'image': 'ranthambore.jpg', 'keywords': 'ranthambore tiger safari'},
+    {'name': 'Meghalaya', 'url_name': 'meghalaya', 'image': 'meghalaya.jpg', 'keywords': 'meghalaya cherrapunji shillong'},
+    {'name': 'Amritsar', 'url_name': 'amritsar', 'image': 'amritsar.jpg', 'keywords': 'amritsar golden temple'},
+    {'name': 'Rishikesh', 'url_name': 'rishikesh', 'image': 'rishikesh.jpg', 'keywords': 'rishikesh yoga rafting'},
+    {'name': 'Kolkata', 'url_name': 'kolkata', 'image': 'kolkata.jpg', 'keywords': 'kolkata calcutta'},
+    {'name': 'Darjeeling', 'url_name': 'darjeeling', 'image': 'darjeeling.jpg', 'keywords': 'darjeeling tea hills'},
+    {'name': 'Mumbai', 'url_name': 'mumbai', 'image': 'mumbai.jpg', 'keywords': 'mumbai bombay'},
+]
+
+
 def search(request):
-    query = request.GET.get('q', '')
-    destinations_list = [
-        {'name': 'Ladakh', 'description': 'Snowy mountains'},
-        {'name': 'Goa', 'description': 'Beaches and nightlife'},
-        {'name': 'Kerala', 'description': 'Backwaters'},
-    ]
-    results = [d for d in destinations_list if query.lower() in d['name'].lower()]
-    return render(request, 'search_results.html', {'query': query, 'results': results})
+    query = (request.GET.get('q', '') or '').strip().lower()
+    if not query:
+        return render(request, 'search_results.html', {'query': '', 'results': [], 'all_destinations': SEARCH_DESTINATIONS})
+
+    def matches(d):
+        if query in d['name'].lower():
+            return True
+        return any(query in k for k in d['keywords'].lower().split())
+
+    results = [d for d in SEARCH_DESTINATIONS if matches(d)]
+
+    # Single match → redirect to that destination's beautiful detail page
+    if len(results) == 1:
+        dest = results[0]
+        return redirect(reverse(dest['url_name']))
+
+    return render(request, 'search_results.html', {
+        'query': request.GET.get('q', '').strip(),
+        'results': results,
+        'all_destinations': SEARCH_DESTINATIONS,
+    })
 
 
 def subscribe(request):
@@ -175,3 +213,89 @@ def udaipur(request): return render(request, 'detail_udaipur.html')
 def kolkata(request): return render(request, 'detail_kolkata.html')
 def darjeeling(request): return render(request, 'detail_darjeeling.html')
 def mumbai(request): return render(request, 'detail_mumbai.html')
+
+
+# ---------- Payment (Razorpay) ----------
+def payment_page(request):
+    """Show payment page with amount and description."""
+    razorpay_key = getattr(settings, 'RAZORPAY_KEY_ID', '') or ''
+    return render(request, 'payment.html', {
+        'razorpay_key': razorpay_key,
+        'payment_enabled': bool(razorpay_key),
+    })
+
+
+@require_http_methods(['POST'])
+def create_order(request):
+    """Create Razorpay order and return order_id, amount, key for checkout."""
+    if not getattr(settings, 'RAZORPAY_KEY_ID', None) or not getattr(settings, 'RAZORPAY_KEY_SECRET', None):
+        return JsonResponse({'error': 'Payment not configured'}, status=503)
+    try:
+        amount_inr = Decimal(request.POST.get('amount', 0))
+        if amount_inr < 1:
+            return JsonResponse({'error': 'Amount must be at least ₹1'}, status=400)
+        description = (request.POST.get('description', '') or 'Travel2India - Trip/Package payment')[:255]
+        email = (request.POST.get('email', '') or '').strip()
+    except Exception:
+        return JsonResponse({'error': 'Invalid amount'}, status=400)
+    amount_paise = int(amount_inr * 100)
+    try:
+        import razorpay
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        data = {
+            'amount': amount_paise,
+            'currency': 'INR',
+            'receipt': f't2i_{datetime.now().strftime("%Y%m%d%H%M%S")}',
+        }
+        order = client.order.create(data=data)
+        order_id = order['id']
+        Payment.objects.create(
+            order_id=order_id,
+            amount_paise=amount_paise,
+            amount_inr=amount_inr,
+            description=description,
+            status='created',
+            email=email,
+        )
+        return JsonResponse({
+            'order_id': order_id,
+            'amount': amount_paise,
+            'currency': 'INR',
+            'key_id': settings.RAZORPAY_KEY_ID,
+            'description': description,
+        })
+    except Exception as e:
+        return JsonResponse({'error': str(e) or 'Failed to create order'}, status=500)
+
+
+@require_http_methods(['POST'])
+def verify_payment(request):
+    """Verify Razorpay signature and mark payment as captured."""
+    if not getattr(settings, 'RAZORPAY_KEY_SECRET', None):
+        return JsonResponse({'success': False, 'error': 'Payment not configured'}, status=503)
+    razorpay_payment_id = request.POST.get('razorpay_payment_id', '')
+    razorpay_order_id = request.POST.get('razorpay_order_id', '')
+    razorpay_signature = request.POST.get('razorpay_signature', '')
+    if not all([razorpay_payment_id, razorpay_order_id, razorpay_signature]):
+        return JsonResponse({'success': False, 'error': 'Missing payment data'}, status=400)
+    try:
+        import razorpay
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        client.utility.verify_payment_signature({
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_signature': razorpay_signature,
+        })
+        pay = Payment.objects.get(order_id=razorpay_order_id)
+        pay.razorpay_payment_id = razorpay_payment_id
+        pay.razorpay_signature = razorpay_signature
+        pay.status = 'captured'
+        pay.save()
+        notify_payment_captured(razorpay_order_id, str(pay.amount_inr), pay.email)
+        return JsonResponse({'success': True, 'order_id': razorpay_order_id})
+    except Payment.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Order not found'}, status=400)
+    except razorpay.errors.SignatureVerificationError:
+        return JsonResponse({'success': False, 'error': 'Invalid signature'}, status=400)
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
