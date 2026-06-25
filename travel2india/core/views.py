@@ -37,13 +37,6 @@ def contact(request):
 
         if name and email and message:
             ContactMessage.objects.create(name=name, email=email, message=message)
-            send_mail(
-                f'New contact from {name}',
-                f'Email: {email}\n\nMessage:\n{message}',
-                settings.EMAIL_HOST_USER,
-                [settings.ADMIN_NOTIFICATION_EMAIL],
-                fail_silently=True,
-            )
             notify_contact_submitted(name, email, message)
             return redirect('contact_success')
 
@@ -122,9 +115,18 @@ def search(request):
         return render(request, 'search_results.html', {'query': '', 'results': [], 'all_destinations': SEARCH_DESTINATIONS})
 
     def matches(d):
-        if query in d['name'].lower():
+        q = query.strip()
+        if q in d['name'].lower():
             return True
-        return any(query in k for k in d['keywords'].lower().split())
+        if q in d['keywords'].lower():
+            return True
+        query_words = q.split()
+        if not query_words:
+            return False
+        return all(
+            any(qw in word for word in d['name'].lower().split() + d['keywords'].lower().split())
+            for qw in query_words
+        )
 
     results = [d for d in SEARCH_DESTINATIONS if matches(d)]
 
@@ -144,13 +146,6 @@ def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email', '').strip()
         if email:
-            send_mail(
-                'New Newsletter Subscription',
-                f'New subscriber: {email}',
-                settings.EMAIL_HOST_USER,
-                [settings.ADMIN_NOTIFICATION_EMAIL],
-                fail_silently=True,
-            )
             notify_newsletter_subscription(email)
             return redirect('subscribe_success')
 
@@ -219,9 +214,10 @@ def mumbai(request): return render(request, 'detail_mumbai.html')
 def payment_page(request):
     """Show payment page with amount and description."""
     razorpay_key = getattr(settings, 'RAZORPAY_KEY_ID', '') or ''
+    razorpay_secret = getattr(settings, 'RAZORPAY_KEY_SECRET', '') or ''
     return render(request, 'payment.html', {
         'razorpay_key': razorpay_key,
-        'payment_enabled': bool(razorpay_key),
+        'payment_enabled': bool(razorpay_key and razorpay_secret),
     })
 
 

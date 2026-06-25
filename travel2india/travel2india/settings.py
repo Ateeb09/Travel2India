@@ -11,22 +11,35 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env file if it exists
+try:
+    from dotenv import load_dotenv
+    load_dotenv(BASE_DIR / '.env')
+except ImportError:
+    pass
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(xc)ay))dtav_+9y5u4xtfwdiba0et6x73*0&+p#)(-aj06pu+'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-(xc)ay))dtav_+9y5u4xtfwdiba0et6x73*0&+p#)(-aj06pu+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True' and 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['192.168.1.6', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+else:
+    ALLOWED_HOSTS.append('*')
+
 
 
 
@@ -78,11 +91,13 @@ WSGI_APPLICATION = 'travel2india.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600
+    )
 }
 
 
@@ -139,8 +154,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ateebahmad009@gmail.com'  # Your Gmail
-EMAIL_HOST_PASSWORD = 'wxmw ovgr awpj wjfu'  # Gmail App Password (not your login password)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'ateebahmad009@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'wxmw ovgr awpj wjfu')
 
 # Email for receiving all website notifications (contact, bookings, subscriptions, etc.)
 ADMIN_NOTIFICATION_EMAIL = 'ateebahmad009@gmail.com'

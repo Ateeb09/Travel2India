@@ -1,0 +1,22 @@
+# Environment variables
+.env
+travel2india/.env
+
+# Databases
+*.sqlite3
+travel2india/db.sqlite3
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Static files collected
+travel2india/staticfiles/
+
+# Environments
+.venv/
+env/
+venv/
+ENV/

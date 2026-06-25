@@ -1,71 +1,82 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>About Us - Travel2India</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
-    <style>
-        .scrolling-text {
-            height: 400px; /* Adjust height as needed */
-            overflow: hidden;
-            position: relative;
-            background: #f5f5f5;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-        }
 
-        .scrolling-text-content {
-            position: absolute;
-            width: 100%;
-            animation: scroll-up 25s linear infinite;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
+{% block title %}About Us{% endblock %}
 
-        @keyframes scroll-up {
-            0% {
-                top: 100%;
-            }
-            100% {
-                top: -100%;
-            }
-        }
+{% block content %}
+<div class="about-page-modern py-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header text-center mb-5">
+            <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <h1 class="display-4 fw-bold" style="font-family: var(--font-display); color: var(--dark);">About Travel2India</h1>
+            <p class="lead text-muted">Your ultimate gateway to discovering the beauty, culture, and rich heritage of India.</p>
+        </div>
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #f7f3f2;
-        }
-    </style>
-</head>
-<body>
-<header>
-    <h1>About Travel2India ✈️</h1>
-</header>
+        <!-- Mission & Story -->
+        <div class="row align-items-center mb-5 g-5">
+            <div class="col-lg-6">
+                <div class="about-card p-4 p-md-5 shadow-sm bg-white rounded-4 border-0">
+                    <h2 class="mb-4 fw-bold text-gradient" style="color: var(--primary); font-family: var(--font-display);">Our Mission</h2>
+                    <p class="fs-5 text-secondary" style="line-height: 1.8;">
+                        At <strong>Travel2India</strong>, we are passionate about showcasing India’s unmatched diversity and beauty. From the tranquil backwaters of Kerala and majesty of the Taj Mahal to the rugged high-altitude terrains of Ladakh, our mission is to connect travelers with handpicked destinations, offering seamless booking, custom itineraries, and authentic cultural experiences.
+                    </p>
+                    <p class="text-secondary" style="line-height: 1.8;">
+                        Whether you seek adventure, heritage, spiritual rejuvenation, or leisure, our platform provides comprehensive guides and 24/7 dedicated support to ensure your journey through Incredible India is nothing short of magical.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{% static 'images/about-us(2).jpg' %}" alt="About Us" class="img-fluid rounded-4 shadow-lg" style="max-height: 450px; object-fit: cover; width: 100%;">
+            </div>
+        </div>
 
-<div class="scrolling-text">
-    <div class="scrolling-text-content">
-        <p>Welcome to <strong>Travel2India</strong>! We are passionate about showcasing the beauty, culture, and heritage of India. Our goal is to make your travel experience unforgettable by offering you the best destinations, comfortable stays, and personalized experiences.</p>
+        <!-- Features Grid -->
+        <div class="my-5">
+            <h2 class="text-center mb-5 fw-bold" style="font-family: var(--font-display); color: var(--dark);">Why Choose Us?</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center p-4 h-100 bg-white rounded-4 shadow-sm">
+                        <div class="feature-icon mb-3" style="font-size: 2.5rem; color: var(--primary);"><i class="fas fa-map-marked-alt"></i></div>
+                        <h4 class="fw-bold">Curated Destinations</h4>
+                        <p class="text-muted">Handpicked itineraries designed by local travel experts.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center p-4 h-100 bg-white rounded-4 shadow-sm">
+                        <div class="feature-icon mb-3" style="font-size: 2.5rem; color: var(--primary);"><i class="fas fa-calendar-check"></i></div>
+                        <h4 class="fw-bold">Easy Inquiry & Booking</h4>
+                        <p class="text-muted">Seamless planning with customized trip quotes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center p-4 h-100 bg-white rounded-4 shadow-sm">
+                        <div class="feature-icon mb-3" style="font-size: 2.5rem; color: var(--primary);"><i class="fas fa-headset"></i></div>
+                        <h4 class="fw-bold">24/7 Premium Support</h4>
+                        <p class="text-muted">Our friendly support assistants are always online to help.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box text-center p-4 h-100 bg-white rounded-4 shadow-sm">
+                        <div class="feature-icon mb-3" style="font-size: 2.5rem; color: var(--primary);"><i class="fas fa-tags"></i></div>
+                        <h4 class="fw-bold">Best Price Guarantee</h4>
+                        <p class="text-muted">Incredible experiences tailored directly to your budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Our Mission</h2>
-        <p>To promote Indian tourism and help travelers explore the hidden gems across the country with ease, safety, and convenience.</p>
-
-        <h2>Why Choose Us?</h2>
-        <ul>
-            <li>Curated destinations & experiences</li>
-            <li>Easy booking & inquiry process</li>
-            <li>Friendly customer support</li>
-            <li>Best price guarantee</li>
-        </ul>
-
-        <p>Join us in discovering the wonders of India with <strong>Travel2India</strong>!</p>
+        <!-- CTA Section -->
+        <div class="text-center my-5 p-5 bg-dark text-white rounded-4 shadow-lg position-relative overflow-hidden" style="background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);">
+            <div class="position-relative z-1">
+                <h2 class="display-6 fw-bold mb-3" style="font-family: var(--font-display);">Ready to explore Incredible India?</h2>
+                <p class="lead mb-4 text-white-50">Create your dream itinerary with our experts today.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{% url 'inquiry' %}" class="btn btn-primary btn-lg px-4 py-3 fw-bold border-0" style="background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 50px;">Start Planning</a>
+                    <a href="{% url 'destinations' %}" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold" style="border-radius: 50px;">Browse Destinations</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<footer>
-    <p style="text-align: center; padding: 20px;">&copy; 2025 Travel2India. All rights reserved.</p>
-</footer>
-</body>
-</html>
+{% endblock %}
