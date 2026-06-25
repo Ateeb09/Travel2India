@@ -33,7 +33,22 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-(xc)ay))dtav_+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True' and 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'travel2india.net.in', 'www.travel2india.net.in']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    ALLOWED_HOSTS.append(f"www.{RENDER_EXTERNAL_HOSTNAME}")
+
+env_hosts = os.environ.get('ALLOWED_HOSTS')
+if env_hosts:
+    for host in env_hosts.split(','):
+        host = host.strip()
+        if host:
+            ALLOWED_HOSTS.append(host)
+            if not host.startswith('www.') and host != '*':
+                ALLOWED_HOSTS.append(f"www.{host}")
+else:
+    ALLOWED_HOSTS.append('*')
 
 
 
