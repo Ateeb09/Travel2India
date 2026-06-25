@@ -36,7 +36,7 @@ Message:
 """
     send_admin_notification('New Contact Message', body)
 
-o
+
 def notify_inquiry_submitted(name, email, destination, dates, message):
     """Notify when booking inquiry is submitted."""
     body = f"""New Booking Inquiry
