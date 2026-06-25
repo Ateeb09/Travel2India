@@ -1,1 +1,1 @@
-web: gunicorn travel2india.wsgi
+web: sh -c 'if [ -f "manage.py" ]; then python manage.py collectstatic --no-input && python manage.py migrate; else python travel2india/manage.py collectstatic --no-input && python travel2india/manage.py migrate; fi' && gunicorn travel2india.wsgi
