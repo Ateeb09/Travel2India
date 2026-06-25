@@ -4,7 +4,7 @@ Travel2India is a modern, responsive Django-based web application designed to sh
 
 ---
 
-## 🚀 Features
+## Features
 
 - **17 Curated Destinations**: Explore detailed guides for places like Kerala Backwaters, Ladakh, Goa, Jaipur, Varanasi, and more—featuring best times to visit, must-see spots, and suggested durations.
 - **Dynamic Search Engine**: A multi-word matching search bar that allows users to query by destination name or keywords (e.g., searching "golden temple" returns Amritsar).
@@ -16,7 +16,7 @@ Travel2India is a modern, responsive Django-based web application designed to sh
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Backend**: Python 3.12, Django 5.1.6
 - **Frontend**: HTML5, Vanilla CSS3 (Custom Styles), JavaScript (ES6), Bootstrap 5.3
@@ -27,7 +27,7 @@ Travel2India is a modern, responsive Django-based web application designed to sh
 
 ---
 
-## 💻 Local Development Setup
+## Local Development Setup
 
 Follow these steps to run the project on your local machine:
 
@@ -80,7 +80,7 @@ Visit `http://127.0.0.1:8000/` in your browser.
 
 ---
 
-## 🌐 Production Deployment on Render
+## Production Deployment on Render
 
 This project is fully configured for deployment on **Render** (using PostgreSQL and WhiteNoise).
 
